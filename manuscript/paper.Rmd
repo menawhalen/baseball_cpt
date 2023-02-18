@@ -1,0 +1,152 @@
+---
+title: |
+  |  \Large Eras in baseball: Change point analysis fun title. 
+author: | 
+  | \large Mena Whalen \vspace{-1.1mm}
+  | \normalsize Department of Mathematics and Statistics \vspace{-1mm}
+  | \normalsize Loyola University Chicago \vspace{-1mm}
+  | \normalsize Chicago, IL 60660 \vspace{-1mm}
+  | \normalsize [`mwhalen3@luc.edu`](mailto:mwhalen3@luc.edu) \vspace{-1mm}
+  |
+  | \large Gregory J. Matthews \vspace{-1.1mm}
+  | \normalsize Department of Mathematics and Statistics \vspace{-1mm}
+  | \normalsize Loyola University Chicago \vspace{-1mm}
+  | \normalsize Chicago, IL 60660 \vspace{-1mm}
+  | \normalsize [`gmatthews1@luc.edu`](mailto:gmatthews1@luc.edu) \vspace{-1mm}
+abstract: |
+  | Baseball is some weird and wild shit. \vspace{2mm}
+  | *Keywords*: change point analysis, baseball, 
+bibliography: references.bib
+fontsize: 12pt
+link-citations: true
+linkcolor: cyan
+urlcolor: cyan
+output:
+  pdf_document:
+    df_print: kable
+    number_sections: true
+    keep_tex: true
+header-includes:
+ \usepackage{setspace}
+ \setstretch{1.15}
+ \usepackage{float}
+ \floatplacement{figure}{t}
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	fig.align = "center",
+	message = FALSE,
+	warning = FALSE
+)
+
+gjm <- function(x, color = "red") {
+  sprintf("\\textcolor{%s}{%s}", color, x)}
+```
+
+```{r pkgs}
+library(tidyverse)
+theme_set(theme_minimal())
+library(Lahman)
+```
+
+\newpage
+
+# Introduction {#sec:intro}
+@Groothius2017 is the most closely related work to ours.  They use univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).  
+
+
+
+
+
+
+
+@Berry1999bridging they talk about bridging eras.  
+
+When did the steroids era start: https://www.espn.com/mlb/topics/_/page/the-steroids-era#:~:text=Unlike%20other%20MLB%20%22eras%2C%22,leaguewide%20PED%20testing%20until%202003.
+
+Traditional wisdom:
+1900-1919 dead ball era
+
+From Woltring:
+"Baseball has endured much change over the course of its history, and because of constant change, the modern era of baseball has been segmented into six distinct sub-eras. A common list presented at Baseball-Reference described the eras as the Dead Ball Era (1901-1919), the Live Ball Era (1920-1941), the Integration Era (1942-1960), the Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid Era (1994-2005) (17). This study runs through the 2011 season and a seventh era will be added and labeled the Post Steroid Era (2006-2011)"
+
+
+https://www.baseball-reference.com/bullpen/Deadball_Era
+1901-1920
+
+Mound was lowered in december 1968.  
+https://www.baseball-reference.com/bullpen/Pitcher%27s_mound
+
+https://www.espn.com/mlb/story/_/id/33238595/major-league-baseball-stops-testing-players-steroids-nearly-20-years-report-says
+
+https://www.semanticscholar.org/paper/Was-There-a-Structural-Break-in-Barry-Bonds's-Bat-Nieswiadomy-Strazicich/0a32effa10a3d26ea4675efcca3f13229efe0f7d
+
+
+# Methods
+@ChoFryzlewwicz2014 and @Cho2016
+
+R Pacakge: @hdbinseg
+
+# Results
+```{r echo = FALSE}
+library(tidyverse)
+library(janitor)
+library(hdbinseg)
+
+teams <- read_csv("../data/Teams.csv") %>% 
+  clean_names()
+
+
+team_names <- teams %>% 
+  group_by(franch_id) %>% 
+  count() %>% 
+  filter(n > 120) %>% 
+  pull(franch_id)
+
+# teams %>% 
+#   filter(franch_id %in% team_names) %>% 
+#   group_by(franch_id) %>% 
+#   summarise(min(year_id)) ## filter after 1901
+
+old_teams_full <- teams %>% 
+  filter(franch_id %in% team_names & year_id > 1900) %>% 
+  select(year_id, franch_id, w, l, r, ab, h, hr, bb, so)
+
+
+teams_wide <- old_teams_full %>% 
+  pivot_wider(id_cols = franch_id, 
+              names_from = year_id, 
+              values_from = hr)
+
+## find thresholding value for cpt using bootstrapping
+thrs <- dcbs.thr(as.matrix(teams_wide[-1]), interval = c(1, dim(teams_wide[-1])[2]))
+### if I lower the threshold more changepoints
+hr_cpt_dcbs <- dcbs.alg(as.matrix(teams_wide[-1]), cp.type = 1, thr = thrs-1)
+hr_cpt_dcbs$ecp
+hr_cpt_sbs <- sbs.alg(as.matrix(teams_wide[-1]), cp.type = 1)         
+hr_cpt_sbs$ecp
+
+cpt_years <- as.numeric(names(teams_wide[-1])[hr_cpt_dcbs$ecp])
+
+ggplot(old_teams_full, aes(year_id, hr, color = franch_id)) +
+  geom_line() +
+  geom_vline(xintercept = cpt_years)
+
+
+```
+
+
+
+
+# Acknowledgements {-}
+
+
+We thank Michael Lopez for suggesting we do "something with change point analysis".  
+
+# Supplementary Material {-}
+
+All code for reproducing the analyses in this paper is publicly available at https://github.com/menawhalen/baseball_cpt
+
+# References
