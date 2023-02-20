@@ -52,7 +52,7 @@ changes_team <- lapply(wide_teams,
                     ## find thresholding value for cpt using bootstrapping
                     thrs <- dcbs.thr(as.matrix(x[-1]), interval = c(1, dim(x[-1])[2]))
                     ### if I lower the threshold more changepoints
-                    hr_cpt_dcbs <- dcbs.alg(as.matrix(x[-1]), cp.type = 1, thr = thrs -3)
+                    hr_cpt_dcbs <- dcbs.alg(as.matrix(x[-1]), cp.type = 1, thr = thrs)
                     cpt_years <- as.numeric(names(x[-1])[hr_cpt_dcbs$ecp])
                     return(tibble(threshold = thrs,
                                   years = cpt_years))
@@ -68,4 +68,5 @@ old_teams_full %>%
     geom_line() +
     geom_vline(data = teams_cpt_time, aes(xintercept = years)) +
     facet_wrap(~ franch_id, scales = "free_y")
-  
+
+#https://medium.com/@riley.poole/baseball-heroes-of-world-war-ii-9d07e0093b3f  
