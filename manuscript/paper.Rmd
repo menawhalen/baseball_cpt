@@ -54,6 +54,26 @@ library(Lahman)
 \newpage
 
 # Introduction {#sec:intro}
+The first professional baseball team in the United States, the Cinicnnati Red Stockings, was formed in 1869.  Many leagues came and went in the late 1800s, but National League (NL), formed in 1876, emerged as the predominant league of the time.  A few decades later, the American League (AL) began growing in popularity and eventually reached an agreement with the NL to be the two major leagues of baseball with the winner of each league playing in the World Series starting in 1903.  
+
+Throughout the history of baseball, the game has gone through many changes and eras.  For example, the time period between approximately 1901-1919 is often referred to as the "Dead Ball Era" and was characterized by low scoring games and dominant pitching.  Another more recent example would be the "Steroid Era" which lasted from approximately 1994 through 2005.  
+
+SOME MORE STUFF
+
+The goal of this work is to use multivariate change point analysis to identify change points in MLB as a whole to objectively identify eras in the games history, but also to look for change points to identify team specific eras.  
+
+The work that is the most closely related to our own is that of @Groothius2017, which looked for structural breaks (Note: the terms "structural breaks" and "change points" are used interchangeably in this manuscript) in univariate times series.  
+
+univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).
+
+
+From Woltring:
+"Baseball has endured much change over the course of its history, and because of constant change, the modern era of baseball has been segmented into six distinct sub-eras. A common list presented at Baseball-Reference described the eras as the Dead Ball Era (1901-1919), the Live Ball Era (1920-1941), the Integration Era (1942-1960), the Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid Era (1994-2005) (17). This study runs through the 2011 season and a seventh era will be added and labeled the Post Steroid Era (2006-2011)"
+
+http://mlb.mlb.com/mlb/history/mlb_history_people.jsp?story=com
+
+
+
 @Groothius2017 is the most closely related work to ours.  They use univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).  
 
 
@@ -136,6 +156,56 @@ ggplot(old_teams_full, aes(year_id, hr, color = franch_id)) +
 
 
 ```
+
+
+
+## Results
+
+```{r}
+load("/Users/gregorymatthews/Dropbox/baseball_cpt/data/teams_cpt_time_df.RData")
+teams_cpt_time_df
+
+```
+
+NYY 1918: Babe Ruth got to the Yankees in 1920.  And starting in 1919 they had exactly one losing seasons between 1919 and 1965.  
+BOS 1917, 1929, 1948, 1994: 
+Their last world series win in the 1900s was in 1918.  
+I don't know 1929. 
+1948 there was a big jump in runs?  
+1994: Strike year. 
+
+LAD: 1919, 1955
+
+ATL 1918 1949
+
+CHW: 1919: Blaack Sox Scandal
+
+CHC: 1919 1940
+1940: War. 
+
+Cin: 1929 1952
+
+CLE 1920 1939
+Cleveland won the world series in 1920. Major change in offensive output.  
+
+
+DET 1927 1940
+
+BAL 1919 1942
+
+SFG 1919 1937
+
+OAK 1920 1936 1951
+
+PHI 1918 1937
+
+PIT 1920 1946
+
+STL 1919 1941
+
+MIN 1919 1942
+
+Pearl Harbor was 1941.  So US was in war in 1942.  
 
 
 
