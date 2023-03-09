@@ -65,6 +65,13 @@ While many baseball writers have attempted to define the different eras of baseb
 Baseball is not the only sport where this type of analysis has been applied.  @PalaciosHuerta2004 looked for structural changes in soccer using data from British soccer leagues through 1996. @FortLee2007 looked for structural breaks in major North American sports other than baseballl; that is basketball (NBA), hockey (NHL), and American football (NFL).  WHAT DID THEY FIND? 
 
 
+All of the previous work mentioned here focuses on change point analysis in ***univariate*** time series. However, recent methodolgical developments in change point analysis allow for change point analysis in ***multivariate*** time series, which is the focus of this current manuscript.  This work leverages techniques such as the Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014) to look for change points in Major League Baseball at two main levels.  First, we look for structural changes in the league as a whole across teams to empirically define different eras in baseball.  Second, we look for change points within a team to determine eras within a team.  In essence, this second goal can be used to identify the beginning and end of so called "dynasties", periods of sustained excellent performance by a team.  In addition, we can also identify the opposite, sustained periods of poor performance which we will term ERAS of SUCKITUDE.  
+
+
+
+
+
+Just Notes: 
 Palacios-Huerta I. (2004). Structural changes during a Century of the World’s most popular sport. Statistical Methods and Applications, 13, 241–258
 @PalaciosHuerta2004 Structural Breaks in soccer
 
