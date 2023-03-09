@@ -54,27 +54,85 @@ library(Lahman)
 \newpage
 
 # Introduction {#sec:intro}
-The first professional baseball team in the United States, the Cinicnnati Red Stockings, was formed in 1869.  Many leagues came and went in the late 1800s, but National League (NL), formed in 1876, emerged as the predominant league of the time.  A few decades later, the American League (AL) began growing in popularity and eventually reached an agreement with the NL to be the two major leagues of baseball with the winner of each league playing in the World Series starting in 1903.  
+The first professional baseball team in the United States, the Cinicnnati Red Stockings, was formed in 1869 (@BBHOF1869).   Many leagues came and went in the late 1800s, but National League (NL), formed in 1876, emerged as the predominant league of the time.  A few decades later, the American League (AL) began growing in popularity and eventually reached an agreement with the NL to be the two major leagues of baseball with the winner of each league playing in the World Series starting in 1903.  
 
-Throughout the history of baseball, the game has gone through many changes and eras.  For example, the time period between approximately 1901-1919 is often referred to as the "Dead Ball Era" and was characterized by low scoring games and dominant pitching.  Another more recent example would be the "Steroid Era" which lasted from approximately 1994 through 2005.  
+Throughout the history of baseball in the United States, the game has gone through many changes and distinct eras.  For example, the time period between approximately 1900-1919 is often referred to as the "Dead Ball Era" and was marked by low scoring games and dominant pitching.  Another more recent example would be the "Steroid Era" which lasted from approximately 1994 through 2005 and was characterized by a rapid increase in power hitting largely attributed to players using performance enhancing drugs.  
+
+While many baseball writers have attempted to define the different eras of baseball, there has also been some academic work that has sought to empirically define eras in baseball.  @Groothius2017 looked for structural breaks in univariate times series of performance measures over the period from 1871-2020.  They analyzed four statistics: slugging percentage (SLG, home run (HR) rate, batting average (BA), and runs batted in (RBI) rate.   For each of these statistics, the computed the mean and standard deviation (SD) across all players who had at least 100 at bats in a given season to yield a univariate time series for each of these statistics.  They then used the Lagrange Multiplier (LM) unit root test proposed in @LeeandStrazicich2003 to find structural breaks.  They identified structural breaks in slugging percentage in 1921 and 1992, the first of which marks the end of the Dead Ball Era and the latter corresponding to the start of the steroid era. 
+
+@LeeFort2005 looks for structural changes in competitive balance of the two league American and National.  Use methods from Andrews1993, Bai1997, 1999 and Bai and Perron 1998 and 2003 to look for break points between 1901 -1999.  Theuy measure competitive balance in two ways: 1) Noll 1988 and Scully 1989 and 2) Lee (2004). They find break point sin competitive balance in 1912, 1926, and 1933 for the NL and in 1926 and 1957 in the AL.  
+
+Baseball is not the only sport where this type of analysis has been applied.  @PalaciosHuerta2004 looked for structural changes in soccer using data from British soccer leagues through 1996. @FortLee2007 looked for structural breaks in major North American sports other than baseballl; that is basketball (NBA), hockey (NHL), and American football (NFL).  WHAT DID THEY FIND? 
+
+
+Palacios-Huerta I. (2004). Structural changes during a Century of the World’s most popular sport. Statistical Methods and Applications, 13, 241–258
+@PalaciosHuerta2004 Structural Breaks in soccer
+
+
+@Nieswiadomy2012 Was there a structural break in Barry Bonds’s Bat?  Looking for structural breaks in Bonds OPS times series. Use the uni root test on monthly data from 86-07.  The identify break points in June 1993 and Sept 2000. 
+
+
+
+
+In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).
+
+https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1465-7295.2007.00026.x
+Fort and Lee 2007: Looks for structural breaks in NBA, NHL, and NFL
+
+
+
+https://www.baseball-reference.com/bullpen/History_of_baseball_in_the_United_States
+
+https://thesportjournal.org/article/examining-perceptions-of-baseballs-eras/
 
 SOME MORE STUFF
+
+
+https://pubmed.ncbi.nlm.nih.gov/30747582/?
+
 
 The goal of this work is to use multivariate change point analysis to identify change points in MLB as a whole to objectively identify eras in the games history, but also to look for change points to identify team specific eras.  
 
 The work that is the most closely related to our own is that of @Groothius2017, which looked for structural breaks (Note: the terms "structural breaks" and "change points" are used interchangeably in this manuscript) in univariate times series.  
 
-univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).
+univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrange Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).
 
-
+@Woltring2018
 From Woltring:
 "Baseball has endured much change over the course of its history, and because of constant change, the modern era of baseball has been segmented into six distinct sub-eras. A common list presented at Baseball-Reference described the eras as the Dead Ball Era (1901-1919), the Live Ball Era (1920-1941), the Integration Era (1942-1960), the Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid Era (1994-2005) (17). This study runs through the 2011 season and a seventh era will be added and labeled the Post Steroid Era (2006-2011)"
 
+Deadball era: https://sabr.org/journal/article/the-rise-and-fall-of-the-deadball-era/
+
 http://mlb.mlb.com/mlb/history/mlb_history_people.jsp?story=com
 
+https://www.nytimes.com/2011/09/25/sports/baseball/scoring-in-baseball-returns-to-dead-ball-levels.html?_r=1&
 
+https://bleacherreport.com/articles/1676509-the-evolution-of-the-baseball-from-the-dead-ball-era-through-today
+
+@FortLee2014: 
+Fort R., Lee Y. H. (2006). Stationarity and major league baseball attendance analysis. Journal of Sports Economics, 7, 408–415.
+
+Fort R., Lee Y. H. (2007). Structural change, competitive balance, and the rest of the major leagues. Economic Inquiry, 45, 519–532.
+
+Lee Y. H., Fort R. (2005). Structural change in baseball’s competitive balance: The great depression, team location, and racial integration. Economic Inquiry, 43, 158–169.
+
+
+@Nieswiadomy2012 Was there a structural break in Barry Bonds’s Bat?  Looking for structural breaks in Bonds OPS times series. Use the uni root test on monthly data from 86-07.  The identify break points in June 1993 and Sept 2000.  
+
+degruyter.com/document/doi/10.1515/1559-0410.1305/html
+
+Palacios-Huerta I. (2004). Structural changes during a Century of the World’s most popular sport. Statistical Methods and Applications, 13, 241–258
+@PalaciosHuerta2004 Structural Breaks in soccer
 
 @Groothius2017 is the most closely related work to ours.  They use univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).  
+
+Fort, Rodney and Young Hoon Lee (2006). “Stationarity and Major League Baseball Attendance Analysis.” Journal of Sports Economics, 7 (4), 408–415. 
+
+Fort, Rodney and Young Hoon Lee (2007). “Structural Change, Competitive Balance, and the Rest of the Major Leagues.” Economic Inquiry, 45 (3), 519-532. 
+
+Lee, Young Hoon, and Rodney Fort (2005). “Structural Change in Baseball’s Competitive Balance: The Great Depression, Team Location, and Racial Integration.” Economic Inquiry, 43, 158-169. 
+
+Sommers, P. (2008). “The Changing Hitting Performance Profile in Major League Baseball, 1966-2006.” Journal of Sports Economics, 9, 435-440. 
 
 
 
