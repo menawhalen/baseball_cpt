@@ -62,7 +62,7 @@ changes <- lapply(names(full_teams)[-c(1:2)],
                     ## find thresholding value for cpt using bootstrapping
                     thrs <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
                     ### if I lower the threshold more changepoints
-                    cpt_dcbs <- dcbs.alg(as.matrix(wide[-1]), cp.type = 1, thr = thrs-1)
+                    cpt_dcbs <- dcbs.alg(as.matrix(wide[-1]), cp.type = 1, thr = thrs)
                     cpt_years <- as.numeric(names(wide[-1])[cpt_dcbs$ecp])
                     return(tibble(threshold = thrs,
                                 years = cpt_years,
@@ -70,9 +70,28 @@ changes <- lapply(names(full_teams)[-c(1:2)],
                     
                   })
 
+changes_var <- lapply(names(full_teams)[-c(1:2)], 
+                  function(i){
+                    wide <- full_teams %>% 
+                      pivot_wider(id_cols = franch_id, 
+                                  names_from = year_id, 
+                                  values_from = i)
+                    
+                    ## find thresholding value for cpt using bootstrapping
+                    thrs <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
+                    ### if I lower the threshold more changepoints
+                    cpt_dcbs <- dcbs.alg(as.matrix(wide[-1]), cp.type = 2, thr = thrs)
+                    cpt_years <- as.numeric(names(wide[-1])[cpt_dcbs$ecp])
+                    return(tibble(threshold = thrs,
+                                  years = cpt_years,
+                                  variable = i))
+                    
+                  })
+
 time_cpts <- changes %>% 
   tibble() %>% 
-  unnest(cols = c(.)) 
+  unnest(cols = c(.)) %>% 
+  mutate(change = "mean")
 
 
 full_teams %>% 
@@ -83,3 +102,17 @@ full_teams %>%
   facet_wrap(~ variable, scales = "free_y")
 
 
+time_cpts_var <- changes_var %>% 
+  tibble() %>% 
+  unnest(cols = c(.)) %>% 
+  mutate(change = "variance")
+
+
+bind_rows(time_cpts, time_cpts_var)
+
+full_teams %>% 
+  pivot_longer(cols = -c(year_id, franch_id), names_to = "variable", values_to = "value") %>% 
+  ggplot(aes(year_id, value, color = franch_id)) +
+  geom_line() +
+  geom_vline(data = bind_rows(time_cpts, time_cpts_var), aes(xintercept = years, linetype = change)) +
+  facet_wrap(~ variable, scales = "free_y")
