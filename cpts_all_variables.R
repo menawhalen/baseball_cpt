@@ -21,11 +21,12 @@ names(old_teams_full)[-c(1:2)]
 apply(old_teams_full, 2,function(x) sum(is.na(x)))
 
 
-imp <- mice::mice(old_teams_full[-c(1:2)])
+imp <- mice::mice(teams[c("r","h","hr","bb","so", "ab", "sb", "g", "attendance", 
+                          "ra", "ha", "hra", "bba", "soa")], method = "cart")
 teams_full_nomiss <- complete(imp)
-apply(teams_full_nomiss, 2,function(x) sum(is.na(x)))
 
-full_teams <- bind_cols(old_teams_full[1:2],teams_full_nomiss) %>% 
+full_teams <- bind_cols(teams[c("year_id", "franch_id")], teams_full_nomiss) %>% 
+  filter(franch_id %in% team_names & year_id > 1900) %>% 
   mutate(hr_per_game = hr/g, 
          so_per_game = so/g,
          bb_per_game = bb/g,
