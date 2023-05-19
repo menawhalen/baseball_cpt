@@ -73,10 +73,11 @@ Baseball is not the only sport where this type of analysis has been applied.  @P
 
 All of the previous work mentioned here focuses on change point analysis in ***univariate*** time series. However, recent methodolgical developments in change point analysis allow for change point analysis in ***multivariate*** time series, which is the focus of this current manuscript.  This work leverages techniques such as the Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014) to look for change points in Major League Baseball at two main levels.  First, we look for structural changes in the league as a whole across teams to empirically define different eras in baseball.  Second, we look for change points within a team to determine eras of a team.  This second analysis can be used to identify the beginning and end of so called "dynasties", periods of sustained excellent performance by a team.  In addition, we can also identify the opposite, sustained periods of poor performance.  
 
-@MillsFort2014
-@MillsFort2018
-@MillsSalaga2015
-@SalagaFort2017
+@LeeFort2008: Attendance and the Uncertainty-of-Outcome Hypothesis in Baseball.  Identify Break points in attendance in 1918 and 1945 for both leagues.  For AL only: 1963, 1978, 1994.  For NL only: 1976.  Using Bai and Perron From table 3 in Mills and Fort 2014
+@MillsFort2014: LEAGUE-LEVEL ATTENDANCE AND OUTCOME UNCERTAINTY IN U.S. PRO SPORTS LEAGUES.  Looks at NHL, NFL, NBA.  Rottenburg 1956 looked at baseball.  Identify break points in NBA, NFL, and NHL.  Table 3
+@MillsSalaga2015: NCAA Basketball: League balance using stats.  
+@MillsFort2018: team-level: Attendence.  
+@SalagaFort2017: College football
 
 
 <!-- Just Notes:  -->
