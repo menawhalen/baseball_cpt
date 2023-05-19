@@ -9,6 +9,12 @@ author: |
   | \normalsize Chicago, IL 60660 \vspace{-1mm}
   | \normalsize [`mwhalen3@luc.edu`](mailto:mwhalen3@luc.edu) \vspace{-1mm}
   |
+  | \large Brian M. Mills \vspace{-1.1mm}
+  | \normalsize College of Education \vspace{-1mm}
+  | \normalsize University of Texas at Austin \vspace{-1mm}
+  | \normalsize Austin, TX 60660 \vspace{-1mm}
+  | \normalsize [`brian.mills@austin.utexas.edu`](mailto:brian.mills@austin.utexas.edu) \vspace{-1mm}
+  |
   | \large Gregory J. Matthews \vspace{-1.1mm}
   | \normalsize Department of Mathematics and Statistics \vspace{-1mm}
   | \normalsize Center for Data Science and Consulting \vspace{-1mm}
