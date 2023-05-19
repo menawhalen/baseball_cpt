@@ -4,12 +4,14 @@ title: |
 author: | 
   | \large Mena Whalen \vspace{-1.1mm}
   | \normalsize Department of Mathematics and Statistics \vspace{-1mm}
+  | \normalsize Center for Data Science and Consulting \vspace{-1mm}
   | \normalsize Loyola University Chicago \vspace{-1mm}
   | \normalsize Chicago, IL 60660 \vspace{-1mm}
   | \normalsize [`mwhalen3@luc.edu`](mailto:mwhalen3@luc.edu) \vspace{-1mm}
   |
   | \large Gregory J. Matthews \vspace{-1.1mm}
   | \normalsize Department of Mathematics and Statistics \vspace{-1mm}
+  | \normalsize Center for Data Science and Consulting \vspace{-1mm}
   | \normalsize Loyola University Chicago \vspace{-1mm}
   | \normalsize Chicago, IL 60660 \vspace{-1mm}
   | \normalsize [`gmatthews1@luc.edu`](mailto:gmatthews1@luc.edu) \vspace{-1mm}
@@ -108,65 +110,65 @@ SOME MORE STUFF
 
 
 
-Deadball era: https://sabr.org/journal/article/the-rise-and-fall-of-the-deadball-era/
+<!-- Deadball era: https://sabr.org/journal/article/the-rise-and-fall-of-the-deadball-era/ -->
 
-http://mlb.mlb.com/mlb/history/mlb_history_people.jsp?story=com
+<!-- http://mlb.mlb.com/mlb/history/mlb_history_people.jsp?story=com -->
 
-https://www.nytimes.com/2011/09/25/sports/baseball/scoring-in-baseball-returns-to-dead-ball-levels.html?_r=1&
+<!-- https://www.nytimes.com/2011/09/25/sports/baseball/scoring-in-baseball-returns-to-dead-ball-levels.html?_r=1& -->
 
-https://bleacherreport.com/articles/1676509-the-evolution-of-the-baseball-from-the-dead-ball-era-through-today
+<!-- https://bleacherreport.com/articles/1676509-the-evolution-of-the-baseball-from-the-dead-ball-era-through-today -->
 
-@FortLee2014: 
-Fort R., Lee Y. H. (2006). Stationarity and major league baseball attendance analysis. Journal of Sports Economics, 7, 408–415.
+<!-- @FortLee2006:  -->
+<!-- Fort R., Lee Y. H. (2006). Stationarity and major league baseball attendance analysis. Journal of Sports Economics, 7, 408–415. -->
 
-Fort R., Lee Y. H. (2007). Structural change, competitive balance, and the rest of the major leagues. Economic Inquiry, 45, 519–532.
+<!-- Fort R., Lee Y. H. (2007). Structural change, competitive balance, and the rest of the major leagues. Economic Inquiry, 45, 519–532. -->
 
-Lee Y. H., Fort R. (2005). Structural change in baseball’s competitive balance: The great depression, team location, and racial integration. Economic Inquiry, 43, 158–169.
-
-
-@Nieswiadomy2012 Was there a structural break in Barry Bonds’s Bat?  Looking for structural breaks in Bonds OPS times series. Use the uni root test on monthly data from 86-07.  The identify break points in June 1993 and Sept 2000.  
-
-degruyter.com/document/doi/10.1515/1559-0410.1305/html
-
-Palacios-Huerta I. (2004). Structural changes during a Century of the World’s most popular sport. Statistical Methods and Applications, 13, 241–258
-@PalaciosHuerta2004 Structural Breaks in soccer
-
-@Groothius2017 is the most closely related work to ours.  They use univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).  
-
-Fort, Rodney and Young Hoon Lee (2006). “Stationarity and Major League Baseball Attendance Analysis.” Journal of Sports Economics, 7 (4), 408–415. 
-
-Fort, Rodney and Young Hoon Lee (2007). “Structural Change, Competitive Balance, and the Rest of the Major Leagues.” Economic Inquiry, 45 (3), 519-532. 
-
-Lee, Young Hoon, and Rodney Fort (2005). “Structural Change in Baseball’s Competitive Balance: The Great Depression, Team Location, and Racial Integration.” Economic Inquiry, 43, 158-169. 
-
-Sommers, P. (2008). “The Changing Hitting Performance Profile in Major League Baseball, 1966-2006.” Journal of Sports Economics, 9, 435-440. 
+<!-- Lee Y. H., Fort R. (2005). Structural change in baseball’s competitive balance: The great depression, team location, and racial integration. Economic Inquiry, 43, 158–169. -->
 
 
+<!-- @Nieswiadomy2012 Was there a structural break in Barry Bonds’s Bat?  Looking for structural breaks in Bonds OPS times series. Use the uni root test on monthly data from 86-07.  The identify break points in June 1993 and Sept 2000.   -->
+
+<!-- degruyter.com/document/doi/10.1515/1559-0410.1305/html -->
+
+<!-- Palacios-Huerta I. (2004). Structural changes during a Century of the World’s most popular sport. Statistical Methods and Applications, 13, 241–258 -->
+<!-- @PalaciosHuerta2004 Structural Breaks in soccer -->
+
+<!-- @Groothius2017 is the most closely related work to ours.  They use univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).   -->
+
+<!-- Fort, Rodney and Young Hoon Lee (2006). “Stationarity and Major League Baseball Attendance Analysis.” Journal of Sports Economics, 7 (4), 408–415.  -->
+
+<!-- Fort, Rodney and Young Hoon Lee (2007). “Structural Change, Competitive Balance, and the Rest of the Major Leagues.” Economic Inquiry, 45 (3), 519-532.  -->
+
+<!-- Lee, Young Hoon, and Rodney Fort (2005). “Structural Change in Baseball’s Competitive Balance: The Great Depression, Team Location, and Racial Integration.” Economic Inquiry, 43, 158-169.  -->
+
+<!-- Sommers, P. (2008). “The Changing Hitting Performance Profile in Major League Baseball, 1966-2006.” Journal of Sports Economics, 9, 435-440.  -->
 
 
 
 
 
-@Berry1999bridging they talk about bridging eras.  
-
-When did the steroids era start: https://www.espn.com/mlb/topics/_/page/the-steroids-era#:~:text=Unlike%20other%20MLB%20%22eras%2C%22,leaguewide%20PED%20testing%20until%202003.
-
-Traditional wisdom:
-1900-1919 dead ball era
-
-From Woltring:
-"Baseball has endured much change over the course of its history, and because of constant change, the modern era of baseball has been segmented into six distinct sub-eras. A common list presented at Baseball-Reference described the eras as the Dead Ball Era (1901-1919), the Live Ball Era (1920-1941), the Integration Era (1942-1960), the Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid Era (1994-2005) (17). This study runs through the 2011 season and a seventh era will be added and labeled the Post Steroid Era (2006-2011)"
 
 
-https://www.baseball-reference.com/bullpen/Deadball_Era
-1901-1920
+<!-- @Berry1999bridging they talk about bridging eras.   -->
 
-Mound was lowered in december 1968.  
-https://www.baseball-reference.com/bullpen/Pitcher%27s_mound
+<!-- When did the steroids era start: https://www.espn.com/mlb/topics/_/page/the-steroids-era#:~:text=Unlike%20other%20MLB%20%22eras%2C%22,leaguewide%20PED%20testing%20until%202003. -->
 
-https://www.espn.com/mlb/story/_/id/33238595/major-league-baseball-stops-testing-players-steroids-nearly-20-years-report-says
+<!-- Traditional wisdom: -->
+<!-- 1900-1919 dead ball era -->
 
-https://www.semanticscholar.org/paper/Was-There-a-Structural-Break-in-Barry-Bonds's-Bat-Nieswiadomy-Strazicich/0a32effa10a3d26ea4675efcca3f13229efe0f7d
+<!-- From Woltring: -->
+<!-- "Baseball has endured much change over the course of its history, and because of constant change, the modern era of baseball has been segmented into six distinct sub-eras. A common list presented at Baseball-Reference described the eras as the Dead Ball Era (1901-1919), the Live Ball Era (1920-1941), the Integration Era (1942-1960), the Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid Era (1994-2005) (17). This study runs through the 2011 season and a seventh era will be added and labeled the Post Steroid Era (2006-2011)" -->
+
+
+<!-- https://www.baseball-reference.com/bullpen/Deadball_Era -->
+<!-- 1901-1920 -->
+
+<!-- Mound was lowered in december 1968.   -->
+<!-- https://www.baseball-reference.com/bullpen/Pitcher%27s_mound -->
+
+<!-- https://www.espn.com/mlb/story/_/id/33238595/major-league-baseball-stops-testing-players-steroids-nearly-20-years-report-says -->
+
+<!-- https://www.semanticscholar.org/paper/Was-There-a-Structural-Break-in-Barry-Bonds's-Bat-Nieswiadomy-Strazicich/0a32effa10a3d26ea4675efcca3f13229efe0f7d -->
 
 
 # Methods
@@ -180,7 +182,7 @@ library(tidyverse)
 library(janitor)
 library(hdbinseg)
 
-teams <- read_csv("../data/Teams.csv") %>% 
+teams <- read_csv("/Users/gregorymatthews/Dropbox/baseball_cpt/data/Teams.csv") %>% 
   clean_names()
 
 
@@ -225,11 +227,9 @@ ggplot(old_teams_full, aes(year_id, hr, color = franch_id)) +
 
 
 ## Results
-
 ```{r}
 load("/Users/gregorymatthews/Dropbox/baseball_cpt/data/teams_cpt_time_df.RData")
 teams_cpt_time_df
-
 ```
 
 NYY 1918: Babe Ruth got to the Yankees in 1920.  And starting in 1919 they had exactly one losing seasons between 1919 and 1965.  
