@@ -109,11 +109,50 @@ time_cpts_var <- changes_var %>%
   mutate(change = "variance")
 
 
-bind_rows(time_cpts, time_cpts_var)
-
 full_teams %>% 
   pivot_longer(cols = -c(year_id, franch_id), names_to = "variable", values_to = "value") %>% 
   ggplot(aes(year_id, value, color = franch_id)) +
   geom_line() +
   geom_vline(data = bind_rows(time_cpts, time_cpts_var), aes(xintercept = years, linetype = change)) +
   facet_wrap(~ variable, scales = "free_y")
+
+##### look at aggregate of a season (year) of the teams to look at all the stats together
+
+szn_ave <- full_teams %>% 
+  group_by(year_id) %>% 
+  summarise(szn_ave_hr = mean(hr_per_game),
+            szn_ave_so = mean(so_per_game),
+            szn_ave_bb = mean(bb_per_game),
+            szn_ave_sb = mean(sb_per_game)) %>% 
+  pivot_longer(cols = -year_id, names_to = "stat", values_to = "value") 
+
+wide <- szn_ave %>% 
+  pivot_wider(id_cols = stat, 
+              names_from = year_id, 
+              values_from = value)
+
+
+## find thresholding value for cpt using bootstrapping
+thrs <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
+                    ### if I lower the threshold more changepoints
+cpt_dcbs <- dcbs.alg(as.matrix(wide[-1]), cp.type = 1, thr = thrs)
+cpt_years <- as.numeric(names(wide[-1])[cpt_dcbs$ecp])
+ 
+#cpt_years                   
+              
+
+## variance
+## find thresholding value for cpt using bootstrapping
+thrs_var <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
+                        ### if I lower the threshold more changepoints
+cpt_dcbs_var <- dcbs.alg(as.matrix(wide[-1]), cp.type = 2, thr = thrs_var)
+cpt_years_var <- as.numeric(names(wide[-1])[cpt_dcbs_var$ecp])
+
+#cpt_years_var  
+
+cpt_szn <- bind_rows(tibble(year = cpt_years, cpt_stat = "mean"), 
+                     tibble(year = cpt_years_var, cpt_stat = "var"))
+
+ggplot(szn_ave) +
+  geom_line(aes(year_id, value, color = stat)) +
+  geom_vline(data = cpt_szn, aes(xintercept = year, linetype = cpt_stat))
