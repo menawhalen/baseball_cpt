@@ -186,61 +186,77 @@ SOME MORE STUFF
 
 R Pacakge: @hdbinseg
 
+## Data
+
+We obtained multi-year baseball statistics from GREG??. Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. To ensure consistency in our methodology, it was necessary for each team to have existed from 1900 until the end of the dataset in 2020. This timeframe of 120 years, denoted as T, encompassed a total of 16 franchise teams, namely NYY, BOS, LAD, ATL, CHW, CHC, CIN, CLE, DET, BAL, SFG, OAK, PHI, PIT, STL, and MIN. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (cite mice/cart) to fill in the missing values and ensure consistent data across all analyses.
+
+## Eras and Dynasties
+
+### Eras
+Since we are interested in finding where in time these different eras of baseball have occurred, we first examine each baseball statistic of interest as their own analysis for all 16 teams. Those baseball statistics are home runs, strikeouts, balls, stolen bases, runs, and attendance which were all standardized to the number of games played in a season since we are interested in seeing how the different statistics change from season to season. Using the methodology from Cho and Fry (CITE) a thresholding parameter was determined from bootstrapping and then used to find where change points in mean and variance existed in the panel of teams data of a given baseball statistic. To examine the idea of changes throughout teams and types of statistics (initially), for each season the average baseball statistic was found from all the teams that year and then an average time series was created of each of the types of statistics of interest. Then the change point methodology was performed on those 6 time series of average statistic types.
+
+###Dynasties
+
+Continuing our investigation, we explored the concept of "dynasties" within modern baseball teams, irrespective of their length of a teams existence. A dynasty, in this context, refers to a period characterized by significant success or potentially hardships. Such a dynasty is identified when a team experiences a noticeable change across all their statistics in a given season, whether it be in a positive or negative direction. This approach aligns well with our methodology, as it involves examining panels of time series data encompassing all statistics for a singular team.
+The statistics of interest for this analysis include runs, hits, home runs, balls, strikeouts, runs against, hits against, home runs against, balls against, and strikeouts against. To ensure comparability, these statistics were standardized using the season average and standard deviation derived from all teams present in each respective season. By standardizing the statistics, we capture a team's offensive and defensive performance. Notably, if a team exhibits a high and positive offensive performance, it can be balanced to zero by large and negative defensive statistics when standardized. Therefore, if a team excels in both aspects of the game, it would have numerous time points above zero, whereas underperforming teams would display many below-zero values.For each team, we examined their ten statistics, analyzing both mean and variance changes to identify potential change points. By scrutinizing these indicators, we aimed to uncover shifts in a team's performance and assess their significance within the context of dynasties.
+
+
 # Results
-```{r echo = FALSE}
-library(tidyverse)
-library(janitor)
-library(hdbinseg)
-
-teams <- read_csv("/Users/gregorymatthews/Dropbox/baseball_cpt/data/Teams.csv") %>% 
-  clean_names()
-
-
-team_names <- teams %>% 
-  group_by(franch_id) %>% 
-  count() %>% 
-  filter(n > 120) %>% 
-  pull(franch_id)
-
-# teams %>% 
-#   filter(franch_id %in% team_names) %>% 
-#   group_by(franch_id) %>% 
-#   summarise(min(year_id)) ## filter after 1901
-
-old_teams_full <- teams %>% 
-  filter(franch_id %in% team_names & year_id > 1900) %>% 
-  select(year_id, franch_id, w, l, r, ab, h, hr, bb, so)
-
-
-teams_wide <- old_teams_full %>% 
-  pivot_wider(id_cols = franch_id, 
-              names_from = year_id, 
-              values_from = hr)
-
-## find thresholding value for cpt using bootstrapping
-thrs <- dcbs.thr(as.matrix(teams_wide[-1]), interval = c(1, dim(teams_wide[-1])[2]))
-### if I lower the threshold more changepoints
-hr_cpt_dcbs <- dcbs.alg(as.matrix(teams_wide[-1]), cp.type = 1, thr = thrs-1)
-hr_cpt_dcbs$ecp
-hr_cpt_sbs <- sbs.alg(as.matrix(teams_wide[-1]), cp.type = 1)         
-hr_cpt_sbs$ecp
-
-cpt_years <- as.numeric(names(teams_wide[-1])[hr_cpt_dcbs$ecp])
-
-ggplot(old_teams_full, aes(year_id, hr, color = franch_id)) +
-  geom_line() +
-  geom_vline(xintercept = cpt_years)
-
-
-```
 
 
 
-## Results
-```{r}
-load("/Users/gregorymatthews/Dropbox/baseball_cpt/data/teams_cpt_time_df.RData")
-teams_cpt_time_df
-```
+## Tables
+
+|Mean/Variance CPT     |Franchise | Change Point Year |
+|:--------|:---------|:----------------|
+|mean     |ANA       |1977             |
+|mean     |ATL       |1900, 1990       |
+|mean     |BAL       |1959, 1999       |
+|mean     |BOS       |1918, 1937       |
+|mean     |CHC       |1891             |
+|mean     |CHW       |1970             |
+|mean     |CIN       |1918, 1952       |
+|mean     |CLE       |1944, 1959, 1993 |
+|mean     |DET       |1958, 1988       |
+|mean     |FLA       |2011             |
+|mean     |HOU       |1999             |
+|mean     |KCR       |1997             |
+|mean     |LAD       |1940, 1961       |
+|mean     |MIL       |1977, 1996       |
+|mean     |MIN       |1959             |
+|mean     |PHI       |1917, 1949       |
+|mean     |PIT       |1939             |
+|mean     |SDP       |1977             |
+|mean     |SEA       |1986, 1999       |
+|mean     |SFG       |1903, 1973       |
+|mean     |STL       |1937             |
+|mean     |TBD       |2007             |
+|mean     |TEX       |1973, 1990       |
+|mean     |WSN       |2011             |
+|variance |ATL       |1887             |
+|variance |BOS       |2008             |
+|variance |CHW       |1969             |
+|variance |CLE       |1966, 1981, 1993 |
+|variance |DET       |1942             |
+|variance |HOU       |2010             |
+|variance |NYM       |1974             |
+|variance |PIT       |1902, 2001       |
+|variance |SDP       |1977             |
+|variance |SFG       |1918             |
+
+|Mean/Variance CPT   |Baseball Statistic     | Change Point Year                    |
+|:--------|:------------|:----------------------|
+|mean     |att_per_game |1945, 1975, 1992       |
+|mean     |bb_per_game  |1927                   |
+|mean     |hr_per_game  |1920, 1946, 1967, 1993 |
+|mean     |r_per_game   |1919, 1940             |
+|mean     |sb_per_game  |1919                   |
+|mean     |so_per_game  |1956, 1993, 2009       |
+|variance |att_per_game |1944, 2008             |
+|variance |hr_per_game  |1927, 1944, 1995, 2007 |
+|variance |r_per_game   |1935                   |
+|variance |sb_per_game  |1919, 1966             |
+|variance |so_per_game  |1990                   |
 
 NYY 1918: Babe Ruth got to the Yankees in 1920.  And starting in 1919 they had exactly one losing seasons between 1919 and 1965.  
 BOS 1917, 1929, 1948, 1994: 

@@ -116,6 +116,11 @@ full_teams %>%
   geom_vline(data = bind_rows(time_cpts, time_cpts_var), aes(xintercept = years, linetype = change)) +
   facet_wrap(~ variable, scales = "free_y")
 
+bind_rows(time_cpts, time_cpts_var) %>% 
+  group_by(change, variable) %>% 
+  summarise(cpt = paste(years, collapse = ", ")) %>% 
+  kableExtra::kable(format = "markdown")
+
 ##### look at aggregate of a season (year) of the teams to look at all the stats together
 
 szn_ave <- full_teams %>% 
