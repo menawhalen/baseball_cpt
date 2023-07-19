@@ -68,97 +68,283 @@ Institution, Department, City, Country of second author and third author, e-mail
 	
 \section{Introduction} 
 
-Found a journal in which you would like to publish? Then we suggest going to the journal’s website and reading the information on the submission form. Please follow our specifications for guidance with creating and formatting your manuscript. In each journal’s supplementary pages, you will find the current impact factor and additional information about the journal.
+The first professional baseball team in the United States, the Cinicnnati Red Stockings, was formed in 1869 (@BBHOF1869).   Many leagues came and went in the late 1800s, but National League (NL), formed in 1876, emerged as the predominant league of the time.  A few decades later, the American League (AL) began growing in popularity and eventually reached an agreement with the NL to be the two major leagues of baseball with the winner of each league playing in the World Series starting in 1903.  
 
-Many journals accept manuscript submissions through the online systems ScholarOne Manuscripts and Editorial Manager. This saves you time and speeds up the publication process. Journals without a submission system of this type can be contacted via the relevant product page.
+Throughout the history of baseball in the United States, the game has gone through many changes and distinct eras.  For example, the time period between approximately 1900-1919 is often referred to as the "Dead Ball Era" and was marked by low scoring games and dominant pitching.  Another more recent example would be the "Steroid Era" which lasted from approximately 1994 through 2005 and was characterized by a rapid increase in power hitting largely attributed to players using performance enhancing drugs. 
 
-More information can be found at https://www.degruyter.com/page/authors.
+More specifically, @Woltring2018 mentions six eras of modern baseball": 
+"Baseball has endured much change over the course of its history, and because of constant change, the modern era of baseball has been segmented into six distinct sub-eras. A common list presented at Baseball-Reference described the eras as the Dead Ball Era (1901-1919), the Live Ball Era (1920-1941), the Integration Era (1942-1960), the Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid Era (1994-2005)."  @Woltring2018 notes that they name a seventh era after 2006, which they term the Post Steroid Era.  
 
-\subsection{General information} 
-Manuscripts should be written in clear and concise English. Please have your text proofread by an English native speaker before you submit it for consideration. At the proof stage, only minor changes and corrections are allowed.
+While many baseball writers have attempted to define the different eras of baseball, there has also been some academic work that has sought to empirically define eras in baseball.  @Groothius2017 looked for structural breaks in univariate times series of performance measures over the period from 1871-2020.  They analyzed four statistics: slugging percentage (SLG, home run (HR) rate, batting average (BA), and runs batted in (RBI) rate.   For each of these statistics, the computed the mean and standard deviation (SD) across all players who had at least 100 at bats in a given season to yield a univariate time series for each of these statistics.  They then used the Lagrange Multiplier (LM) unit root test proposed in @LeeandStrazicich2003 to find structural breaks.  They identified structural breaks in slugging percentage in 1921 and 1992, the first of which marks the end of the Dead Ball Era and the latter corresponding to the start of the steroid era. 
 
-The \textbf{Introduction} to the manuscript should contain a clear definition of the problem being considered. Wherever possible theoretical results should be cited. The use of SI units is required.
+@LeeFort2005 looks for structural changes in competitive balance of the two league American and National.  Use methods from Andrews1993, Bai1997, 1999 and Bai and Perron 1998 and 2003 to look for break points between 1901 -1999.  Theuy measure competitive balance in two ways: 1) @Noll1988 and @Scully1989 and 2) Lee 2004. They find break point sin competitive balance in 1912, 1926, and 1933 for the NL and in 1926 and 1957 in the AL.  
 
-\section{Layout of manuscripts} 
-\subsection{Equations and theorem-like environments}	
-\textbf{Equations} should be well-aligned and should not be crowded \eqref{eq:1}. Only Latin and Greek alphabets are to be used. Complicated superscripts and subscripts should be avoided by introducing new symbols. Avoid repetition of a complicated expression by representing it with a symbol.
+Baseball is not the only sport where this type of analysis has been applied.  @PalaciosHuerta2004 looked for structural changes in soccer using data from British soccer leagues through 1996.  They had data from division I (Premier League) and II starting in the late 1800s, and data from lower divisions III and IV from just after WWII starting in 1947.  They identify a number of change points.  Notably they identify a change point in the mean of margin of victory in 1925 related to the change in the definition of offsides (changed from 3 players to 2 players), an change points in the variability of number of goals in the early 1980s and 1992 corresponding to the change in number of points for a win (i.e. went from 2 points to 3 points) and a change in the backpass rule, respectively.  @FortLee2007 looked for structural breaks in major North American sports other than baseball (i.e. basketball (NBA), hockey (NHL), and American football (NFL)).  They identified a number of change points related to competitive balance in each sport that often, though not always, correspond to league expansion, league mergers, or other major events in a sport (e.g. increased number of foreign players in the NBA in the late 1990s/early 2000s).
 
-% unnumbered equation if not cited in the text
-\begin{equation*}
-k_{n+1} = n^2 + k_n^2 - k_{n-1}
-\end{equation*}
+% # WHAT DID THEY FIND?   ADD MORE HERE.  
 
-% numbered equation if cited in the text
-\begin{equation}
-f(x)=(x+a)(x+b)
-\label{eq:1}
-\end{equation}
+All of the previous work mentioned here focuses on change point analysis in {\bf univariate} time series. However, recent methodolgical developments in change point analysis allow for change point analysis in {\bf multivariate} time series, which is the focus of this current manuscript.  This work leverages techniques such as the Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014) to look for change points in Major League Baseball at two main levels.  First, we look for structural changes in the league as a whole across teams to empirically define different eras in baseball.  Second, we look for change points within a team to determine eras of a team.  This second analysis can be used to identify the beginning and end of so called "dynasties", periods of sustained excellent performance by a team.  In addition, we can also identify the opposite, sustained periods of poor performance.  
 
-New theorem-like environments will be introduced by using the commands \verb|\theoremstyle| and \verb|\newtheorem|.
-Please note that the environments proof and definition are already defined within dgryuter.sty.
-
-\begin{definition}
-This is a definition environment.
-\end{definition}
-	
-\begin{theorem}
-This is a theorem environment.
-\end{theorem}
-	
-\begin{proof}
-This is a proof environment.
-\end{proof}
-
-\subsection{Figures and Tables}
-The number of \textbf{Figures} should be limited to the absolute minimum. Images must be of good contrast and sufficiently high resolution for reproduction (minimum 600 dpi). Lettering of all figures should be uniform in style. Authors are encouraged to submit illustrations in color if necessary for their scientific content. Publication of color figures is provided free of charge both in online and print editions.
-
-When drawing bar graphs, use patterning/color instead of grey scales (faint shading may be lost upon reproduction).
-Each figure should be uploaded separately as .jpg-, .eps-, .pdf- or .tiff-file. The legends for the figures must be concise and self-explanatory. The key to the symbols in the figures should be included in the figure where possible. Otherwise, they should be included in the legend.
-
-A concise, self-explanatory caption should appear below \textbf{Figures and Tables}. Each table should be placed on a separate manuscript page including its caption. All figures and tables should be numbered and referred to in your document as Table 1 or Figure 1 (e.g. “See Table \ref{tab:Table1}”, “As Figure 2 indicates” etc.).
-
-\begin{table} [!ht]
-\caption{Sample table with header.}
-\begin{tabular}{rrl}
-Table head 1 	& Table head 2 	& Table head 3 	\\ \midrule
-10 						& 40 						& text A 				\\
-20						& 50						& text B 				\\
-30						& 60 						& text C 				\\
-\end{tabular}
-\label{tab:Table1}
-\end{table}
-
-\begin{table} [!ht]
-\caption{Sample table without header.}
-\begin{tabular}{rrrr}
-\starttabularbody %Table starts with the body
-First column 	& Second column 	& Third column 	& Fourth column	\\
-1 						& 2 							& 3 						& 4							\\
-4 						& 5 							& 6 						& 7 						\\
-8 						& 9 							& 11 						& 12 						\\
-\end{tabular}
-\label{tab:Table2}
-\end{table}
-
-\subsection{References}
-Please refer to the journal's website for more information on the reference style. 
-Sample references can be found here: \cite{carbonaro:2008} and \cite{farley:2010,antonyan,chen:2013,hofmann:2013,yong:2001}. All references should be collected at the end of the paper. 
-
-\section{Manuscript processing} 
-
-The \textbf{evaluation process} varies from journal to journal.
-
-\begin{itemize}
-    \item Single-blind review: the reviewers remain anonymous to the authors.
-    \item Double-blind review: the reviewers do not know who the authors are, nor do the authors know who has evaluated their manuscript.
-\end{itemize}
-Typically, at least two independent experts are invited to review a manuscript’s content. The manuscript is then either accepted, rejected, or returned for revision based on their evaluation.
-
-With many journals, you can propose reviewers who come from outside of your closest areas of academia. It is at the editors’ discretion whether to accept these proposals.
+@LeeFort2008: Attendance and the Uncertainty-of-Outcome Hypothesis in Baseball.  Identify Break points in attendance in 1918 and 1945 for both leagues.  For AL only: 1963, 1978, 1994.  For NL only: 1976.  Using Bai and Perron From table 3 in Mills and Fort 2014
+@MillsFort2014: LEAGUE-LEVEL ATTENDANCE AND OUTCOME UNCERTAINTY IN U.S. PRO SPORTS LEAGUES.  Looks at NHL, NFL, NBA.  Rottenburg 1956 looked at baseball.  Identify break points in NBA, NFL, and NHL.  Table 3
+@MillsSalaga2015: NCAA Basketball: League balance using stats.  
+@MillsFort2018: team-level: Attendence.  
+@SalagaFort2017: College football
 
 
-\textbf{Galley proofs}: Before your contribution is published, you will receive a proof of the article to proofread. At this point in the publication process, there must be no more changes made to the content: only minor corrections in form and phrasing are possible.	
-		
+% <!-- Just Notes:  -->
+% <!-- Palacios-Huerta I. (2004). Structural changes during a Century of the World’s most popular sport. Statistical Methods and Applications, 13, 241–258 -->
+% <!-- @PalaciosHuerta2004 Structural Breaks in soccer -->
+% 
+% 
+% <!-- @Nieswiadomy2012 Was there a structural break in Barry Bonds’s Bat?  Looking for structural breaks in Bonds OPS times series. Use the uni root test on monthly data from 86-07.  The identify break points in June 1993 and Sept 2000.  -->
+% 
+% 
+% <!-- In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014). -->
+% 
+% <!-- https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1465-7295.2007.00026.x -->
+% <!-- Fort and Lee 2007: Looks for structural breaks in NBA, NHL, and NFL -->
+% 
+% 
+% 
+% <!-- https://www.baseball-reference.com/bullpen/History_of_baseball_in_the_United_States -->
+% 
+% <!-- https://thesportjournal.org/article/examining-perceptions-of-baseballs-eras/ -->
+
+SOME MORE STUFF
+
+
+% <!-- https://pubmed.ncbi.nlm.nih.gov/30747582/? -->
+% 
+% 
+% <!-- The goal of this work is to use multivariate change point analysis to identify change points in MLB as a whole to objectively identify eras in the games history, but also to look for change points to identify team specific eras.   -->
+% 
+% <!-- The work that is the most closely related to our own is that of @Groothius2017, which looked for structural breaks (Note: the terms "structural breaks" and "change points" are used interchangeably in this manuscript) in univariate times series.   -->
+% 
+% <!-- univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrange Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014). -->
+% 
+% 
+% <!-- https://journals.sagepub.com/doi/10.1177/152700250100200204 -->
+% 
+% <!-- Deadball era: https://sabr.org/journal/article/the-rise-and-fall-of-the-deadball-era/ -->
+% 
+% <!-- http://mlb.mlb.com/mlb/history/mlb_history_people.jsp?story=com -->
+% 
+% <!-- https://www.nytimes.com/2011/09/25/sports/baseball/scoring-in-baseball-returns-to-dead-ball-levels.html?_r=1& -->
+% 
+% <!-- https://bleacherreport.com/articles/1676509-the-evolution-of-the-baseball-from-the-dead-ball-era-through-today -->
+% 
+% <!-- @FortLee2006:  -->
+% <!-- Fort R., Lee Y. H. (2006). Stationarity and major league baseball attendance analysis. Journal of Sports Economics, 7, 408–415. -->
+% 
+% <!-- Fort R., Lee Y. H. (2007). Structural change, competitive balance, and the rest of the major leagues. Economic Inquiry, 45, 519–532. -->
+% 
+% <!-- Lee Y. H., Fort R. (2005). Structural change in baseball’s competitive balance: The great depression, team location, and racial integration. Economic Inquiry, 43, 158–169. -->
+% 
+% 
+% <!-- @Nieswiadomy2012 Was there a structural break in Barry Bonds’s Bat?  Looking for structural breaks in Bonds OPS times series. Use the uni root test on monthly data from 86-07.  The identify break points in June 1993 and Sept 2000.   -->
+% 
+% <!-- degruyter.com/document/doi/10.1515/1559-0410.1305/html -->
+% 
+% <!-- Palacios-Huerta I. (2004). Structural changes during a Century of the World’s most popular sport. Statistical Methods and Applications, 13, 241–258 -->
+% <!-- @PalaciosHuerta2004 Structural Breaks in soccer -->
+% 
+% <!-- @Groothius2017 is the most closely related work to ours.  They use univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).   -->
+% 
+% <!-- Fort, Rodney and Young Hoon Lee (2006). “Stationarity and Major League Baseball Attendance Analysis.” Journal of Sports Economics, 7 (4), 408–415.  -->
+% 
+% <!-- Fort, Rodney and Young Hoon Lee (2007). “Structural Change, Competitive Balance, and the Rest of the Major Leagues.” Economic Inquiry, 45 (3), 519-532.  -->
+% 
+% <!-- Lee, Young Hoon, and Rodney Fort (2005). “Structural Change in Baseball’s Competitive Balance: The Great Depression, Team Location, and Racial Integration.” Economic Inquiry, 43, 158-169.  -->
+% 
+% <!-- Sommers, P. (2008). “The Changing Hitting Performance Profile in Major League Baseball, 1966-2006.” Journal of Sports Economics, 9, 435-440.  -->
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% <!-- @Berry1999bridging they talk about bridging eras.   -->
+% 
+% <!-- When did the steroids era start: https://www.espn.com/mlb/topics/_/page/the-steroids-era#:~:text=Unlike%20other%20MLB%20%22eras%2C%22,leaguewide%20PED%20testing%20until%202003. -->
+% 
+% <!-- Traditional wisdom: -->
+% <!-- 1900-1919 dead ball era -->
+% 
+% <!-- From Woltring: -->
+% <!-- "Baseball has endured much change over the course of its history, and because of constant change, the modern era of baseball has been segmented into six distinct sub-eras. A common list presented at Baseball-Reference described the eras as the Dead Ball Era (1901-1919), the Live Ball Era (1920-1941), the Integration Era (1942-1960), the Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid Era (1994-2005) (17). This study runs through the 2011 season and a seventh era will be added and labeled the Post Steroid Era (2006-2011)" -->
+% 
+% 
+% <!-- https://www.baseball-reference.com/bullpen/Deadball_Era -->
+% <!-- 1901-1920 -->
+% 
+% <!-- Mound was lowered in december 1968.   -->
+% <!-- https://www.baseball-reference.com/bullpen/Pitcher%27s_mound -->
+% 
+% <!-- https://www.espn.com/mlb/story/_/id/33238595/major-league-baseball-stops-testing-players-steroids-nearly-20-years-report-says -->
+% 
+% <!-- https://www.semanticscholar.org/paper/Was-There-a-Structural-Break-in-Barry-Bonds's-Bat-Nieswiadomy-Strazicich/0a32effa10a3d26ea4675efcca3f13229efe0f7d -->
+% 
+
+\section{Methods}
+@ChoFryzlewwicz2014 and @Cho2016
+
+R Pacakge: @hdbinseg
+
+A commonly employed method for detecting changes over time involves the CUSUM statistic in binary segmentation, which creates a tree diagram, dividing the time series after successfully identifying a change point until no further change points are detected. The magnitude of the CUSUM difference between two segments generally indicates a potential change point, depending on the assumptions and statistical tests applied to the time series. While this process works well for a single time series, detecting change points across a panel of multiple time series requires a more comprehensive approach. @Cho2016 introduced the double CUSUM (DC) algorithm, assuming there are $n$ time series, all of the same length $T$, with unknown common change point locations. This algorithm utilizes the CUSUM values of multiple time series $(j = 1, \dots, n)$ to cross-sectionally compare time segments for potential change points.
+
+To achieve this, Cho's DC statistic involves ordered CUSUM values for a given time location, favoring larger values as potential change point candidates. It incorporates a partial thresholding of the smaller ordered CUSUM values, effectively representing a scaled average of the most prominent values at a given location across all "n" time series. Maximizing the DC statistic across all time series and potential time locations results in a test statistic for detecting a change point. This test statistic is then compared against a specific testing criterion, denoted as $\pi_{n,T}^\phi$, leading to the partitioning of time series and the formation of a tree structure based on the detected change points.
+
+To determine the testing criterion $\pi_{n,T}^\phi$, a Generalized Dynamic Factor Model (GDFM) bootstrapping algorithm is employed, accounting for potential correlations within and between high-dimensional time series. This methodology enables the detection of second-order change points, utilizing methodology from @ChoFryzlewwicz2014 Haar wavelet periodograms and cross-periodograms, as opposed to the traditional CUSUM statistic. For further details, refer to @Cho2016 and @ChoFryzlewwicz2014.
+
+A commonly employed method for detecting changes over time involves the
+CUSUM statistic in binary segmentation, which creates a tree diagram,
+dividing the time series after successfully identifying a change point
+until no further change points are detected. The magnitude of the CUSUM
+difference between two segments generally indicates a potential change
+point, depending on the assumptions and statistical tests applied to the
+time series. While this process works well for a single time series,
+detecting change points across a panel of multiple time series requires
+a more comprehensive approach. H. Cho \cite{Cho2016} introduced the double CUSUM (DC) algorithm, assuming there are $n$ time series, all of the same length
+$T$, with unknown common change point locations. This algorithm
+utilizes the CUSUM values of multiple time series $(j = 1, \dots, n)$
+to cross-sectionally compare time segments for potential change points.
+
+To achieve this, Cho's DC statistic involves ordered CUSUM values for a
+given time location, favoring larger values as potential change point
+candidates. It incorporates a partial thresholding of the smaller
+ordered CUSUM values, effectively representing a scaled average of the
+most prominent values at a given location across all ``n'' time series.
+Maximizing the DC statistic across all time series and potential time
+locations results in a test statistic for detecting a change point. This
+test statistic is then compared against a specific testing criterion,
+denoted as $\pi_{n,T}^\phi$, leading to the partitioning of time
+series and the formation of a tree structure based on the detected
+change points.
+
+To determine the testing criterion $\pi_{n,T}^\phi$, a Generalized
+Dynamic Factor Model (GDFM) bootstrapping algorithm is employed,
+accounting for potential correlations within and between
+high-dimensional time series. This methodology enables the detection of
+second-order change points, utilizing methodology from H. Cho and
+Fryzlewicz (\cite{ChoFryzlewwicz2014}). Haar
+wavelet periodograms and cross-periodograms, as opposed to the
+traditional CUSUM statistic. For further details, refer to H. Cho
+(\cite{Cho2016}) and H. Cho and Fryzlewicz
+(\cite{ChoFryzlewwicz2014}).
+
+\section{Data}
+We obtained multi-year baseball statistics from GREG??. Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. To ensure consistency in our methodology, it was necessary for each team to have existed from 1900 until the end of the dataset in 2020. This timeframe of 120 years, denoted as T, encompassed a total of 16 franchise teams, namely NYY, BOS, LAD, ATL, CHW, CHC, CIN, CLE, DET, BAL, SFG, OAK, PHI, PIT, STL, and MIN. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (cite mice/cart) to fill in the missing values and ensure consistent data across all analyses.
+
+
+\section{Methods}
+<<echo = FALSE, message = FALSE, warning = FALSE>>=
+library(tidyverse)
+library(janitor)
+library(hdbinseg)
+
+teams <- read_csv("/Users/gregorymatthews/Dropbox/baseball_cpt/data/Teams.csv") %>% 
+  clean_names()
+
+
+team_names <- teams %>% 
+  group_by(franch_id) %>% 
+  count() %>% 
+  filter(n > 120) %>% 
+  pull(franch_id)
+
+# teams %>% 
+#   filter(franch_id %in% team_names) %>% 
+#   group_by(franch_id) %>% 
+#   summarise(min(year_id)) ## filter after 1901
+
+old_teams_full <- teams %>% 
+  filter(franch_id %in% team_names & year_id > 1900) %>% 
+  select(year_id, franch_id, w, l, r, ab, h, hr, bb, so)
+
+
+teams_wide <- old_teams_full %>% 
+  pivot_wider(id_cols = franch_id, 
+              names_from = year_id, 
+              values_from = hr)
+
+## find thresholding value for cpt using bootstrapping
+thrs <- dcbs.thr(as.matrix(teams_wide[-1]), interval = c(1, dim(teams_wide[-1])[2]))
+### if I lower the threshold more changepoints
+hr_cpt_dcbs <- dcbs.alg(as.matrix(teams_wide[-1]), cp.type = 1, thr = thrs-1)
+hr_cpt_dcbs$ecp
+hr_cpt_sbs <- sbs.alg(as.matrix(teams_wide[-1]), cp.type = 1)         
+hr_cpt_sbs$ecp
+
+cpt_years <- as.numeric(names(teams_wide[-1])[hr_cpt_dcbs$ecp])
+
+ggplot(old_teams_full, aes(year_id, hr, color = franch_id)) +
+  geom_line() +
+  geom_vline(xintercept = cpt_years)
+
+
+@
+
+
+
+\section{results}
+%
+% # <<>>=
+% # load("./baseball_cpt/data/teams_cpt_time_df.RData")
+% # teams_cpt_time_df
+% # @
+%
+
+NYY 1918: Babe Ruth got to the Yankees in 1920.  And starting in 1919 they had exactly one losing seasons between 1919 and 1965.  
+BOS 1917, 1929, 1948, 1994: 
+Their last world series win in the 1900s was in 1918.  
+I don't know 1929. 
+1948 there was a big jump in runs?  
+1994: Strike year. 
+
+LAD: 1919, 1955
+
+ATL 1918 1949
+
+CHW: 1919: Blaack Sox Scandal
+
+CHC: 1919 1940
+1940: War. 
+
+Cin: 1929 1952
+
+CLE 1920 1939
+Cleveland won the world series in 1920. Major change in offensive output.  
+
+
+DET 1927 1940
+
+BAL 1919 1942
+
+SFG 1919 1937
+
+OAK 1920 1936 1951
+
+PHI 1918 1937
+
+PIT 1920 1946
+
+STL 1919 1941
+
+MIN 1919 1942
+
+Pearl Harbor was 1941.  So US was in war in 1942.  
+
+
+
+
+\section{Acknowledgements}
+We thank Michael Lopez for suggesting we do "something with change point analysis".  
+
+\section{Supp}
+
+All code for reproducing the analyses in this paper is publicly available at https://github.com/menawhalen/baseball\_cpt
 
 
 \begin{acknowledgement}
@@ -168,45 +354,11 @@ With many journals, you can propose reviewers who come from outside of your clos
 \begin{funding}
   Please insert information concerning research grant support here (institution and grant number). Please provide for each funder the funder’s DOI according to https://doi.crossref.org/funderNames?mode=list.
 \end{funding}
-%\bibliographystyle{...}
-%\bibliography{...}
+
+\bibliographystyle{rss}
+\bibliography{references.bib}
 
 
 
-\begin{thebibliography}{9}
-%Please refer to the journal's website for the corresponding reference style.
 
-% -- Articles in journals    -- %
-\bibitem{carbonaro:2008}
-A. Carbonaro, G. Metafune and C. Spina, Parabolic Schrödinger operators, \emph{J. Math. Anal. Appl.} \textbf{343} (2008), 965–974.
-
-% -- Articles ahead of print -- %
-\bibitem{farley:2010}
-D. Farley and L. Sabalka, Presentations of graph braid groups, \emph{Forum Math.} (2010), DOI: 10.1515/form.2011.086.
-
-% -- Accepted articles       -- %
-\bibitem{antonyan}
-S. A. Antonyan and T. Dobrowolski, Locally contractible coset spaces, \emph{Forum Math.}, to appear.
-
-% -- Preprints               -- %
-\bibitem{chen:2013}
-Z.-Q. Chen and L. Wang, Uniqueness of stable processes with drift, preprint (2013), http://arxiv.org/pdf/1309.6414v1.
-
-% -- Books and Monographs    -- %
-\bibitem{hofmann:2013}
-K. H. Hofmann and S. A. Morris, \emph{The Structure of Compact Groups}, 3rd ed., De Gruyter Stud. Math. 25, De Gruyter, Berlin, 2013.
-
-% -- Contributions           -- %
-\bibitem{yong:2001}
-W.-A. Yong, Basic aspects of hyperbolic relaxation systems, in: \emph{Advances in the Theory of Shock Waves, Progr. Nonlinear Differential Equations Appl. 47}, Birkhäuser, Boston (2001), 259–305.
-
-% -- Thesis           			-- %
-\bibitem{king:1995}
-J. D. King, \emph{Thesis title}, Ph.D. thesis, University of Cambridge, 1995.
-
-% -- Proceedings       			-- %
-\bibitem{hay:2016}
-B. Hay, Drone tourism: a study of the current and potential use of drones in hospitality and tourism, in: \emph{CAUTHE 2016: the changing landscape of tourism and hospitality: the impact of emerging markets and emerging destinations}, Blue Mountains, Sydney, 8-11 February, 2016, pp. 49-68. 
-
-\end{thebibliography}
 \end{document}
