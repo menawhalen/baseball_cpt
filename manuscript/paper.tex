@@ -6,22 +6,6 @@
 \documentclass[
   12pt,
 ]{article}
-\title{~\Large Eras in baseball: Change point analysis fun title.}
-\author{\large Mena Whalen \vspace{-1.1mm}\\
-\normalsize Department of Mathematics and Statistics \vspace{-1mm}\\
-\normalsize Loyola University Chicago \vspace{-1mm}\\
-\normalsize Chicago, IL 60660 \vspace{-1mm}\\
-\normalsize \href{mailto:mwhalen3@luc.edu}{\texttt{mwhalen3@luc.edu}}
-\vspace{-1mm}\\
-\strut \\
-\large Gregory J. Matthews \vspace{-1.1mm}\\
-\normalsize Department of Mathematics and Statistics \vspace{-1mm}\\
-\normalsize Loyola University Chicago \vspace{-1mm}\\
-\normalsize Chicago, IL 60660 \vspace{-1mm}\\
-\normalsize \href{mailto:gmatthews1@luc.edu}{\texttt{gmatthews1@luc.edu}}
-\vspace{-1mm}}
-\date{}
-
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{iftex}
@@ -51,16 +35,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  colorlinks=true,
-  linkcolor={cyan},
-  filecolor={Maroon},
-  citecolor={Blue},
-  urlcolor={cyan},
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
@@ -116,6 +90,42 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  colorlinks=true,
+  linkcolor={cyan},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={cyan},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{~\Large Eras in baseball: Change-Ups and Change Points: An
+Exploration of Baseball's Historic Eras}
+\author{\large Mena Whalen \vspace{-1.1mm}\\
+\normalsize Department of Mathematics and Statistics \vspace{-1mm}\\
+\normalsize Center for Data Science and Consulting \vspace{-1mm}\\
+\normalsize Loyola University Chicago \vspace{-1mm}\\
+\normalsize Chicago, IL 60660 \vspace{-1mm}\\
+\normalsize \href{mailto:mwhalen3@luc.edu}{\texttt{mwhalen3@luc.edu}}
+\vspace{-1mm}\\
+\strut \\
+\large Brian M. Mills \vspace{-1.1mm}\\
+\normalsize College of Education \vspace{-1mm}\\
+\normalsize University of Texas at Austin \vspace{-1mm}\\
+\normalsize Austin, TX 78712 \vspace{-1mm}\\
+\normalsize \href{mailto:brian.mills@austin.utexas.edu}{\texttt{brian.mills@austin.utexas.edu}}
+\vspace{-1mm}\\
+\strut \\
+\large Gregory J. Matthews \vspace{-1.1mm}\\
+\normalsize Department of Mathematics and Statistics \vspace{-1mm}\\
+\normalsize Center for Data Science and Consulting \vspace{-1mm}\\
+\normalsize Loyola University Chicago \vspace{-1mm}\\
+\normalsize Chicago, IL 60660 \vspace{-1mm}\\
+\normalsize \href{mailto:gmatthews1@luc.edu}{\texttt{gmatthews1@luc.edu}}
+\vspace{-1mm}}
+\date{}
 
 \begin{document}
 \maketitle
@@ -130,8 +140,7 @@ Baseball is some weird and wild shit. \vspace{2mm}\\
 \section{Introduction}\label{sec:intro}}
 
 The first professional baseball team in the United States, the
-Cinicnnati Red Stockings, was formed in 1869
-(\protect\hyperlink{ref-BBHOF1869}{Rothenberg}
+Cinicnnati Red Stockings, was formed in 1869 (Rothenberg
 (\protect\hyperlink{ref-BBHOF1869}{n.d.})). Many leagues came and went
 in the late 1800s, but National League (NL), formed in 1876, emerged as
 the predominant league of the time. A few decades later, the American
@@ -148,222 +157,114 @@ lasted from approximately 1994 through 2005 and was characterized by a
 rapid increase in power hitting largely attributed to players using
 performance enhancing drugs.
 
-While many baseball writers have attempted to define the different eras
-of baseball, there has also been some academic work that has sought to
-empirically define eras in baseball.
-\protect\hyperlink{ref-Groothius2017}{Groothius, Rotthoff, and
-Strazicich} (\protect\hyperlink{ref-Groothius2017}{2017}) looked for
-structural breaks in univariate times series of performance measures
-over the period from 1871-2020. They analyzed four statistics: slugging
-percentage (SLG, home run (HR) rate, batting average (BA), and runs
-batted in (RBI) rate. For each of these statistics, the computed the
-mean and standard deviation (SD) across all players who had at least 100
-at bats in a given season to yield a univariate time series for each of
-these statistics. They then used the Lagrange Multiplier (LM) unit root
-test proposed in
-(\protect\hyperlink{ref-LeeandStrazicich2003}{\textbf{LeeandStrazicich2003?}})
-to find structural breaks. They identified structural breaks in slugging
-percentage in 1921 and 1992, the first of which marks the end of the
-Dead Ball Era and the latter corresponding to the start of the steroid
-era.
-
-\protect\hyperlink{ref-LeeFort2005}{H. and R.}
-(\protect\hyperlink{ref-LeeFort2005}{2005}) looks for structural changes
-in competitive balance of the two league American and National. Use
-methods from Andrews1993, Bai1997, 1999 and Bai and Perron 1998 and 2003
-to look for break points between 1901 -1999. Theuy measure competitive
-balance in two ways: 1) Noll 1988 and Scully 1989 and 2) Lee (2004).
-They find break point sin competitive balance in 1912, 1926, and 1933
-for the NL and in 1926 and 1957 in the AL.
-
-Baseball is not the only sport where this type of analysis has been
-applied. \protect\hyperlink{ref-PalaciosHuerta2004}{I.}
-(\protect\hyperlink{ref-PalaciosHuerta2004}{2004}) looked for structural
-changes in soccer using data from British soccer leagues through 1996.
-\protect\hyperlink{ref-FortLee2007}{Fort R.}
-(\protect\hyperlink{ref-FortLee2007}{2007}) looked for structural breaks
-in major North American sports other than baseballl; that is basketball
-(NBA), hockey (NHL), and American football (NFL). WHAT DID THEY FIND?
-
-All of the previous work mentioned here focuses on
-\textbf{\emph{univariate}} In contrast to their methods, we use more
-modern methods Double CUSUM Binary Segmentation algorithm
-(\protect\hyperlink{ref-Cho2016}{H. Cho}
-(\protect\hyperlink{ref-Cho2016}{2016})) and the Sparsified Binary
-Segmentation algorithm (\protect\hyperlink{ref-ChoFryzlewwicz2014}{H.
-Cho and Fryzlewicz} (\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014})).
-
-Just Notes: Palacios-Huerta I. (2004). Structural changes during a
-Century of the World's most popular sport. Statistical Methods and
-Applications, 13, 241--258
-\protect\hyperlink{ref-PalaciosHuerta2004}{I.}
-(\protect\hyperlink{ref-PalaciosHuerta2004}{2004}) Structural Breaks in
-soccer
-
-\protect\hyperlink{ref-Nieswiadomy2012}{Nieswiadomy}
-(\protect\hyperlink{ref-Nieswiadomy2012}{2012}) Was there a structural
-break in Barry Bonds's Bat? Looking for structural breaks in Bonds OPS
-times series. Use the uni root test on monthly data from 86-07. The
-identify break points in June 1993 and Sept 2000.
-
-In contrast to their methods, we use more modern methods Double CUSUM
-Binary Segmentation algorithm (\protect\hyperlink{ref-Cho2016}{H. Cho}
-(\protect\hyperlink{ref-Cho2016}{2016})) and the Sparsified Binary
-Segmentation algorithm (\protect\hyperlink{ref-ChoFryzlewwicz2014}{H.
-Cho and Fryzlewicz} (\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014})).
-
-\url{https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1465-7295.2007.00026.x}
-Fort and Lee 2007: Looks for structural breaks in NBA, NHL, and NFL
-
-\url{https://www.baseball-reference.com/bullpen/History_of_baseball_in_the_United_States}
-
-\url{https://thesportjournal.org/article/examining-perceptions-of-baseballs-eras/}
-
-SOME MORE STUFF
-
-\url{https://pubmed.ncbi.nlm.nih.gov/30747582/}?
-
-The goal of this work is to use multivariate change point analysis to
-identify change points in MLB as a whole to objectively identify eras in
-the games history, but also to look for change points to identify team
-specific eras.
-
-The work that is the most closely related to our own is that of
-\protect\hyperlink{ref-Groothius2017}{Groothius, Rotthoff, and
-Strazicich} (\protect\hyperlink{ref-Groothius2017}{2017}), which looked
-for structural breaks (Note: the terms ``structural breaks'' and
-``change points'' are used interchangeably in this manuscript) in
-univariate times series.
-
-univariate time series of the means and SD's of several statistics
-(i.e.~SLUG, HR rate, RBI rate, and batting average) to look for
-structural breaks via the Lagrange Multiplier (LM) unit root test
-(\protect\hyperlink{ref-LeeandStrazicich2003}{\textbf{LeeandStrazicich2003?}}).
-Notably they find structural breaks in slugging percentage in 1921 and
-1992. In contrast to their methods, we use more modern methods Double
-CUSUM Binary Segmentation algorithm (\protect\hyperlink{ref-Cho2016}{H.
-Cho} (\protect\hyperlink{ref-Cho2016}{2016})) and the Sparsified Binary
-Segmentation algorithm (\protect\hyperlink{ref-ChoFryzlewwicz2014}{H.
-Cho and Fryzlewicz} (\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014})).
-
-\protect\hyperlink{ref-Woltring2018}{Woltring and Jubenville}
-(\protect\hyperlink{ref-Woltring2018}{2018}) From Woltring: ``Baseball
-has endured much change over the course of its history, and because of
-constant change, the modern era of baseball has been segmented into six
-distinct sub-eras. A common list presented at Baseball-Reference
-described the eras as the Dead Ball Era (1901-1919), the Live Ball Era
-(1920-1941), the Integration Era (1942-1960), the Expansion Era
-(1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid
-Era (1994-2005) (17). This study runs through the 2011 season and a
-seventh era will be added and labeled the Post Steroid Era (2006-2011)''
-
-Deadball era:
-\url{https://sabr.org/journal/article/the-rise-and-fall-of-the-deadball-era/}
-
-\url{http://mlb.mlb.com/mlb/history/mlb_history_people.jsp?story=com}
-
-\url{https://www.nytimes.com/2011/09/25/sports/baseball/scoring-in-baseball-returns-to-dead-ball-levels.html?_r=1\&}
-
-\url{https://bleacherreport.com/articles/1676509-the-evolution-of-the-baseball-from-the-dead-ball-era-through-today}
-
-(\protect\hyperlink{ref-FortLee2014}{\textbf{FortLee2014?}}): Fort R.,
-Lee Y. H. (2006). Stationarity and major league baseball attendance
-analysis. Journal of Sports Economics, 7, 408--415.
-
-Fort R., Lee Y. H. (2007). Structural change, competitive balance, and
-the rest of the major leagues. Economic Inquiry, 45, 519--532.
-
-Lee Y. H., Fort R. (2005). Structural change in baseball's competitive
-balance: The great depression, team location, and racial integration.
-Economic Inquiry, 43, 158--169.
-
-\protect\hyperlink{ref-Nieswiadomy2012}{Nieswiadomy}
-(\protect\hyperlink{ref-Nieswiadomy2012}{2012}) Was there a structural
-break in Barry Bonds's Bat? Looking for structural breaks in Bonds OPS
-times series. Use the uni root test on monthly data from 86-07. The
-identify break points in June 1993 and Sept 2000.
-
-degruyter.com/document/doi/10.1515/1559-0410.1305/html
-
-Palacios-Huerta I. (2004). Structural changes during a Century of the
-World's most popular sport. Statistical Methods and Applications, 13,
-241--258 \protect\hyperlink{ref-PalaciosHuerta2004}{I.}
-(\protect\hyperlink{ref-PalaciosHuerta2004}{2004}) Structural Breaks in
-soccer
-
-\protect\hyperlink{ref-Groothius2017}{Groothius, Rotthoff, and
-Strazicich} (\protect\hyperlink{ref-Groothius2017}{2017}) is the most
-closely related work to ours. They use univariate time series of the
-means and SD's of several statistics (i.e.~SLUG, HR rate, RBI rate, and
-batting average) to look for structural breaks via the Lagrane
-Multiplier (LM) unit root test
-(\protect\hyperlink{ref-LeeandStrazicich2003}{\textbf{LeeandStrazicich2003?}}).
-Notably they find structural breaks in slugging percentage in 1921 and
-1992. In contrast to their methods, we use more modern methods Double
-CUSUM Binary Segmentation algorithm (\protect\hyperlink{ref-Cho2016}{H.
-Cho} (\protect\hyperlink{ref-Cho2016}{2016})) and the Sparsified Binary
-Segmentation algorithm (\protect\hyperlink{ref-ChoFryzlewwicz2014}{H.
-Cho and Fryzlewicz} (\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014})).
-
-Fort, Rodney and Young Hoon Lee (2006). ``Stationarity and Major League
-Baseball Attendance Analysis.'' Journal of Sports Economics, 7 (4),
-408--415.
-
-Fort, Rodney and Young Hoon Lee (2007). ``Structural Change, Competitive
-Balance, and the Rest of the Major Leagues.'' Economic Inquiry, 45 (3),
-519-532.
-
-Lee, Young Hoon, and Rodney Fort (2005). ``Structural Change in
-Baseball's Competitive Balance: The Great Depression, Team Location, and
-Racial Integration.'' Economic Inquiry, 43, 158-169.
-
-Sommers, P. (2008). ``The Changing Hitting Performance Profile in Major
-League Baseball, 1966-2006.'' Journal of Sports Economics, 9, 435-440.
-
-\protect\hyperlink{ref-Berry1999bridging}{Berry, Reese, and Larkey}
-(\protect\hyperlink{ref-Berry1999bridging}{1999}) they talk about
-bridging eras.
-
-When did the steroids era start:
-\url{https://www.espn.com/mlb/topics/_/page/the-steroids-era\#}:\textasciitilde:text=Unlike\%20other\%20MLB\%20\%22eras\%2C\%22,leaguewide\%20PED\%20testing\%20until\%202003.
-
-Traditional wisdom: 1900-1919 dead ball era
-
-From Woltring: ``Baseball has endured much change over the course of its
+More specifically, Woltring and Jubenville
+(\protect\hyperlink{ref-Woltring2018}{2018}) mentions six eras of modern
+baseball'': ``Baseball has endured much change over the course of its
 history, and because of constant change, the modern era of baseball has
 been segmented into six distinct sub-eras. A common list presented at
 Baseball-Reference described the eras as the Dead Ball Era (1901-1919),
 the Live Ball Era (1920-1941), the Integration Era (1942-1960), the
 Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long
-Ball/Steroid Era (1994-2005) (17). This study runs through the 2011
-season and a seventh era will be added and labeled the Post Steroid Era
-(2006-2011)''
+Ball/Steroid Era (1994-2005).'' Woltring and Jubenville
+(\protect\hyperlink{ref-Woltring2018}{2018}) notes that they name a
+seventh era after 2006, which they term the Post Steroid Era.
 
-\url{https://www.baseball-reference.com/bullpen/Deadball_Era} 1901-1920
+While many baseball writers have attempted to define the different eras
+of baseball, there has also been some academic work that has sought to
+empirically define eras in baseball. Groothius, Rotthoff, and Strazicich
+(\protect\hyperlink{ref-Groothius2017}{2017}) looked for structural
+breaks in univariate times series of performance measures over the
+period from 1871-2020. They analyzed four statistics: slugging
+percentage (SLG, home run (HR) rate, batting average (BA), and runs
+batted in (RBI) rate. For each of these statistics, the computed the
+mean and standard deviation (SD) across all players who had at least 100
+at bats in a given season to yield a univariate time series for each of
+these statistics. They then used the Lagrange Multiplier (LM) unit root
+test proposed in J. Lee and Strazicich
+(\protect\hyperlink{ref-LeeandStrazicich2003}{n.d.}) to find structural
+breaks. They identified structural breaks in slugging percentage in 1921
+and 1992, the first of which marks the end of the Dead Ball Era and the
+latter corresponding to the start of the steroid era.
 
-Mound was lowered in december 1968.\\
-\url{https://www.baseball-reference.com/bullpen/Pitcher\%27s_mound}
+Lee and Fort (\protect\hyperlink{ref-LeeFort2005}{2005}) looks for
+structural changes in competitive balance of the two league American and
+National. Use methods from Andrews1993, Bai1997, 1999 and Bai and Perron
+1998 and 2003 to look for break points between 1901 -1999. Theuy measure
+competitive balance in two ways: 1) Noll
+(\protect\hyperlink{ref-Noll1988}{1988}) and Scully
+(\protect\hyperlink{ref-Scully1989}{1989}) and 2) Lee 2004. They find
+break point sin competitive balance in 1912, 1926, and 1933 for the NL
+and in 1926 and 1957 in the AL.
 
-\url{https://www.espn.com/mlb/story/_/id/33238595/major-league-baseball-stops-testing-players-steroids-nearly-20-years-report-says}
+Baseball is not the only sport where this type of analysis has been
+applied. I. (\protect\hyperlink{ref-PalaciosHuerta2004}{2004}) looked
+for structural changes in soccer using data from British soccer leagues
+through 1996. They had data from division I (Premier League) and II
+starting in the late 1800s, and data from lower divisions III and IV
+from just after WWII starting in 1947. They identify a number of change
+points. Notably they identify a change point in the mean of margin of
+victory in 1925 related to the change in the definition of offsides
+(changed from 3 players to 2 players), an change points in the
+variability of number of goals in the early 1980s and 1992 corresponding
+to the change in number of points for a win (i.e.~went from 2 points to
+3 points) and a change in the backpass rule, respectively. Fort and Lee
+(\protect\hyperlink{ref-FortLee2007}{2007}) looked for structural breaks
+in major North American sports other than baseball (i.e.~basketball
+(NBA), hockey (NHL), and American football (NFL)). They identified a
+number of change points related to competitive balance in each sport
+that often, though not always, correspond to league expansion, league
+mergers, or other major events in a sport (e.g.~increased number of
+foreign players in the NBA in the late 1990s/early 2000s).
 
-\url{https://www.semanticscholar.org/paper/Was-There-a-Structural-Break-in-Barry-Bonds's-Bat-Nieswiadomy-Strazicich/0a32effa10a3d26ea4675efcca3f13229efe0f7d}
+All of the previous work mentioned here focuses on change point analysis
+in \textbf{\emph{univariate}} time series. However, recent methodolgical
+developments in change point analysis allow for change point analysis in
+\textbf{\emph{multivariate}} time series, which is the focus of this
+current manuscript. This work leverages techniques such as the Double
+CUSUM Binary Segmentation algorithm (H. Cho
+(\protect\hyperlink{ref-Cho2016}{2016})) and the Sparsified Binary
+Segmentation algorithm (H. Cho and Fryzlewicz
+(\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014})) to look for change
+points in Major League Baseball at two main levels. First, we look for
+structural changes in the league as a whole across teams to empirically
+define different eras in baseball. Second, we look for change points
+within a team to determine eras of a team. This second analysis can be
+used to identify the beginning and end of so called ``dynasties'',
+periods of sustained excellent performance by a team. In addition, we
+can also identify the opposite, sustained periods of poor performance.
+
+Y. H. Lee and Fort (\protect\hyperlink{ref-LeeFort2008}{2008}):
+Attendance and the Uncertainty-of-Outcome Hypothesis in Baseball.
+Identify Break points in attendance in 1918 and 1945 for both leagues.
+For AL only: 1963, 1978, 1994. For NL only: 1976. Using Bai and Perron
+From table 3 in Mills and Fort 2014 MILLS and FORT
+(\protect\hyperlink{ref-MillsFort2014}{2014}): LEAGUE-LEVEL ATTENDANCE
+AND OUTCOME UNCERTAINTY IN U.S. PRO SPORTS LEAGUES. Looks at NHL, NFL,
+NBA. Rottenburg 1956 looked at baseball. Identify break points in NBA,
+NFL, and NHL. Table 3 Mills and Salaga
+(\protect\hyperlink{ref-MillsSalaga2015}{2015}): NCAA Basketball: League
+balance using stats.\\
+Mills and Fort (\protect\hyperlink{ref-MillsFort2018}{2018}):
+team-level: Attendence.\\
+Salaga and Fort (\protect\hyperlink{ref-SalagaFort2017}{2017}): College
+football
+
+SOME MORE STUFF
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
 
-\protect\hyperlink{ref-ChoFryzlewwicz2014}{H. Cho and Fryzlewicz}
-(\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014}) and
-\protect\hyperlink{ref-Cho2016}{H. Cho}
-(\protect\hyperlink{ref-Cho2016}{2016})
+H. Cho and Fryzlewicz (\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014})
+and H. Cho (\protect\hyperlink{ref-Cho2016}{2016})
 
-R Pacakge: \protect\hyperlink{ref-hdbinseg}{Haeran Cho and Fryzlewicz}
+R Pacakge: Haeran Cho and Fryzlewicz
 (\protect\hyperlink{ref-hdbinseg}{2018})
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
 
 \begin{verbatim}
-## [1] 20 46 67 94
+## [1]  20  46  67  94 106
 \end{verbatim}
 
 \begin{verbatim}
@@ -377,9 +278,9 @@ R Pacakge: \protect\hyperlink{ref-hdbinseg}{Haeran Cho and Fryzlewicz}
 \subsection{Results}\label{results-1}}
 
 \begin{longtable}[]{@{}lrr@{}}
-\toprule
+\toprule()
 franch\_id & threshold & years \\
-\midrule
+\midrule()
 \endhead
 NYY & 4.801818 & 1918 \\
 BOS & 4.427752 & 1917 \\
@@ -414,7 +315,7 @@ STL & 5.444239 & 1919 \\
 STL & 5.444239 & 1941 \\
 MIN & 4.498666 & 1919 \\
 MIN & 4.498666 & 1942 \\
-\bottomrule
+\bottomrule()
 \end{longtable}
 
 NYY 1918: Babe Ruth got to the Yankees in 1920. And starting in 1919
@@ -460,7 +361,7 @@ Pearl Harbor was 1941. So US was in war in 1942.
 \addcontentsline{toc}{section}{Acknowledgements}
 
 We thank Michael Lopez for suggesting we do ``something with change
-point analysis.''
+point analysis''.
 
 \hypertarget{supplementary-material}{%
 \section*{Supplementary Material}\label{supplementary-material}}
@@ -475,12 +376,6 @@ available at \url{https://github.com/menawhalen/baseball_cpt}
 
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-Berry1999bridging}{}}%
-Berry, Scott M., C. Shane Reese, and Patrick D. Larkey. 1999.
-{``Bridging Different Eras in Sports.''} \emph{Journal of the American
-Statistical Association} 94 (447): 661--76.
-\url{https://doi.org/10.1080/01621459.1999.10474163}.
-
 \leavevmode\vadjust pre{\hypertarget{ref-Cho2016}{}}%
 Cho, H. 2016. {``Change-Point Detection in Panel Data via Double CUSUM
 Statistic.''} \emph{Electronic Journal of Statistics} 10: 2000--2038.
@@ -496,33 +391,68 @@ High Dimensional Time Series via Sparsified Binary Segmentation.''}
 \emph{JRSSB} 77: 475--507.
 
 \leavevmode\vadjust pre{\hypertarget{ref-FortLee2007}{}}%
-Fort R., Lee Y. H. 2007. {``Structural Change, Competitive Balance, and
-the Rest of the Major Leagues.''} \emph{Economic Inquiry} 45 (3):
-519--32.
+Fort, and Lee. 2007. {``Structural Change, Competitive Balance, and the
+Rest of the Major Leagues.''} \emph{Economic Inquiry} 45 (3): 519--32.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Groothius2017}{}}%
 Groothius, Peter A., Kurt W. Rotthoff, and Mark C. Strazicich. 2017.
 {``Structural Breaks in the Game: The Case of Major League Baseball.''}
 \emph{Journal of Sports Economics} 18 (6): 622--37.
 
-\leavevmode\vadjust pre{\hypertarget{ref-LeeFort2005}{}}%
-H., Lee Y., and Fort R. 2005. {``Structural Change in MLB Competitive
-Balance: The Depression, Team Location, and Integration.''}
-\emph{Economic Inquiry} 43 (1): 158--69.
-
 \leavevmode\vadjust pre{\hypertarget{ref-PalaciosHuerta2004}{}}%
 I., Palacios-Huerta. 2004. {``Structural Changes During a Century of the
 World's Most Popular Sport.''} \emph{Statistical Methods and
 Applications} 12: 241--58.
 
-\leavevmode\vadjust pre{\hypertarget{ref-Nieswiadomy2012}{}}%
-Nieswiadomy, Strazicich, M. L. 2012. {``Was There a Structural Break in
-Barry Bonds's Bat?''} \emph{Journal of Quantitative Analysis in Sports}
-8 (3).
+\leavevmode\vadjust pre{\hypertarget{ref-LeeandStrazicich2003}{}}%
+Lee, J., and M. Strazicich. n.d. {``Minimum Lagrange Multiplier Unit
+Root Test with Two Structural Breaks.''} \emph{The Review of Economics
+and Statistics}, no. 4: 1082--89.
+
+\leavevmode\vadjust pre{\hypertarget{ref-LeeFort2008}{}}%
+Lee, Y. H., and R. Fort. 2008. {``Attendance and the
+Uncertainty-of-Outcome Hypothesis in Baseball.''} \emph{Review of
+Industrial Organization} 33 (4): 281--95.
+
+\leavevmode\vadjust pre{\hypertarget{ref-LeeFort2005}{}}%
+Lee, and Fort. 2005. {``Structural Change in MLB Competitive Balance:
+The Depression, Team Location, and Integration.''} \emph{Economic
+Inquiry} 43 (1): 158--69.
+
+\leavevmode\vadjust pre{\hypertarget{ref-MillsFort2018}{}}%
+Mills, Brian M., and Rodney Fort. 2018. {``Team-Level Time Series
+Analysis in MLB, the NBA, and the NHL: Attendance and Outcome
+Uncertainty.''} \emph{Journal of Sports Economics} 19 (7): 911--33.
+\url{https://doi.org/10.1177/1527002517690787}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-MillsSalaga2015}{}}%
+Mills, Brian M., and Steven Salaga. 2015. {``Historical Time Series
+Perspectives on Competitive Balance in NCAA Division i Basketball.''}
+\emph{Journal of Sports Economics} 16 (6): 614--46.
+\url{https://doi.org/10.1177/1527002515580925}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-MillsFort2014}{}}%
+MILLS, BRIAN, and RODNEY FORT. 2014. {``LEAGUE-LEVEL ATTENDANCE AND
+OUTCOME UNCERTAINTY IN u.s. PRO SPORTS LEAGUES.''} \emph{Economic
+Inquiry} 52 (1): 205--18.
+https://doi.org/\url{https://doi.org/10.1111/ecin.12037}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Noll1988}{}}%
+Noll, R. G. 1988. {``Professional Basketball.''} \emph{Stanford
+University Studies in Industrial Economics}, no. 144.
 
 \leavevmode\vadjust pre{\hypertarget{ref-BBHOF1869}{}}%
 Rothenberg, Matt. n.d. \emph{PRO BASEBALL BEGAN IN CINCINNATI IN 1869}.
 \url{https://baseballhall.org/discover/pro-baseball-began-in-cincinnati-in-1869\#:~:text=The\%20Cincinnati\%20Red\%20Stockings\%20made,professional\%20baseball\%20club\%20in\%201869.}
+
+\leavevmode\vadjust pre{\hypertarget{ref-SalagaFort2017}{}}%
+Salaga, S., and R. Fort. 2017. {``Structural Change in Competitive
+Balance in Big-Time College Football.''} \emph{Review of Industrial
+Organization} 50: 27--41.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Scully1989}{}}%
+Scully, G. W. 1989. \emph{The Business of Major League Baseball}.
+University of Chicago Press.
 
 \leavevmode\vadjust pre{\hypertarget{ref-Woltring2018}{}}%
 Woltring, Rost, M., and C. Jubenville. 2018. {``Examining Perceptions of
