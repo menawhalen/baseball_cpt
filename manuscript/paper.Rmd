@@ -238,7 +238,7 @@ ggplot(old_teams_full, aes(year_id, hr, color = franch_id)) +
 
 ## Results
 ```{r}
-load("/Users/gregorymatthews/Dropbox/baseball_cpt/data/teams_cpt_time_df.RData")
+load("./baseball_cpt/data/teams_cpt_time_df.RData")
 teams_cpt_time_df
 ```
 
