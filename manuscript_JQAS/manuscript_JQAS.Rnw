@@ -215,63 +215,92 @@ Continuing our investigation, we explored the concept of "dynasties" within mode
 The statistics of interest for this analysis include runs, hits, home runs, balls, strikeouts, runs against, hits against, home runs against, balls against, and strikeouts against. To ensure comparability, these statistics were standardized using the season average and standard deviation derived from all teams present in each respective season. By standardizing the statistics, we capture a team's offensive and defensive performance. Notably, if a team exhibits a high and positive offensive performance, it can be balanced to zero by large and negative defensive statistics when standardized. Therefore, if a team excels in both aspects of the game, it would have numerous time points above zero, whereas underperforming teams would display many below-zero values.For each team, we examined their ten statistics, analyzing both mean and variance changes to identify potential change points. By scrutinizing these indicators, we aimed to uncover shifts in a team's performance and assess their significance within the context of dynasties.
 
 \begin{table}
-\begin{tabular}{ccc}
-mean/ var & TM & year \\
-mean & ANA & 1977
+\begin{tabular}{|r|r|}
+Franchise & Change Point Year(s) \\
+\hline
+ANA       & 1977             \\
+ATL       & 1900, 1990       \\
+BAL       & 1959, 1999      \\
+BOS       & 1918, 1937       \\
+CHC       & 1891             \\
+CHW       & 1970             \\
+CIN       & 1918, 1952       \\
+CLE       & 1944, 1959, 1993 \\
+DET       & 1958, 1988       \\
+FLA       & 2011             \\
+HOU       & 1999             \\
+KCR       & 1997             \\
+LAD       & 1940, 1961       \\
+MIL       & 1977, 1996       \\
+MIN       & 1959             \\
+PHI       & 1917, 1949       \\
+PIT       & 1939             \\
+SDP       & 1977             \\
+SEA       & 1986, 1999       \\
+SFG       & 1903, 1973       \\
+STL       & 1937             \\
+TBD       & 2007             \\
+TEX       & 1973, 1990       \\
+WSN       & 2011             \\
 \end{tabular}
-\caption{F}
+\caption{Mean change points for teams}
+\label{tab:mean:team}
+\end{table}
+
+ 
+
 \begin{table}
+\begin{tabular}{|r|r|}
+Franchise & Change Point Year(s) \\
+\hline
+ATL       &1887             \\
+BOS       &2008             \\
+CHW       &1969             \\
+CLE       &1966, 1981, 1993 \\
+DET       &1942             \\
+HOU       &2010             \\
+NYM       &1974             \\
+PIT       &1902, 2001       \\
+SDP       &1977             \\
+SFG       &1918             \\
+\end{tabular}
+\caption{Variance change points for teams}
+\label{tab:var:team}
+\end{table}
 
-|Mean/Variance CPT     |Franchise | Change Point Year |
-|:--------|:---------|:----------------|
-|mean     |ANA       |1977             |
-|mean     |ATL       |1900, 1990       |
-|mean     |BAL       |1959, 1999       |
-|mean     |BOS       |1918, 1937       |
-|mean     |CHC       |1891             |
-|mean     |CHW       |1970             |
-|mean     |CIN       |1918, 1952       |
-|mean     |CLE       |1944, 1959, 1993 |
-|mean     |DET       |1958, 1988       |
-|mean     |FLA       |2011             |
-|mean     |HOU       |1999             |
-|mean     |KCR       |1997             |
-|mean     |LAD       |1940, 1961       |
-|mean     |MIL       |1977, 1996       |
-|mean     |MIN       |1959             |
-|mean     |PHI       |1917, 1949       |
-|mean     |PIT       |1939             |
-|mean     |SDP       |1977             |
-|mean     |SEA       |1986, 1999       |
-|mean     |SFG       |1903, 1973       |
-|mean     |STL       |1937             |
-|mean     |TBD       |2007             |
-|mean     |TEX       |1973, 1990       |
-|mean     |WSN       |2011             |
-|variance |ATL       |1887             |
-|variance |BOS       |2008             |
-|variance |CHW       |1969             |
-|variance |CLE       |1966, 1981, 1993 |
-|variance |DET       |1942             |
-|variance |HOU       |2010             |
-|variance |NYM       |1974             |
-|variance |PIT       |1902, 2001       |
-|variance |SDP       |1977             |
-|variance |SFG       |1918             |
+Table \ref{tab:mean:team} says some shit.  
+Table \ref{tab:var:team} says some shit. 
 
-|Mean/Variance CPT   |Baseball Statistic     | Change Point Year                    |
-|:--------|:------------|:----------------------|
-|mean     |att_per_game |1945, 1975, 1992       |
-|mean     |bb_per_game  |1927                   |
-|mean     |hr_per_game  |1920, 1946, 1967, 1993 |
-|mean     |r_per_game   |1919, 1940             |
-|mean     |sb_per_game  |1919                   |
-|mean     |so_per_game  |1956, 1993, 2009       |
-|variance |att_per_game |1944, 2008             |
-|variance |hr_per_game  |1927, 1944, 1995, 2007 |
-|variance |r_per_game   |1935                   |
-|variance |sb_per_game  |1919, 1966             |
-|variance |so_per_game  |1990                   |
+
+\begin{table}
+\begin{tabular}{|r|r|}
+Statistic & Change Point Year(s) \\
+\hline
+attpergame &1945, 1975, 1992       \\
+bbpergame  &1927                   \\
+hrpergame  &1920, 1946, 1967, 1993 \\
+rpergame   &1919, 1940             \\
+sbpergame  &1919                   \\
+sopergame  &1956, 1993, 2009       \\
+\end{tabular}
+\caption{Mean Change points for statistics}
+\label{tab:mean:stat}
+\end{table}
+
+\begin{table}
+\begin{tabular}{|r|r|}
+Statistic & Change Point Year(s) \\
+\hline
+attpergame &1944, 2008             \\
+hrpergame  &1927, 1944, 1995, 2007 \\
+rpergame   &1935                   \\
+sbpergame  &1919, 1966             \\
+sopergame  &1990                   \\
+\end{tabular}
+\caption{Variance Change points for statistics}
+\label{tab:var:stat}
+\end{table}
+
 
 
 <<echo = FALSE, message = FALSE, warning = FALSE>>=

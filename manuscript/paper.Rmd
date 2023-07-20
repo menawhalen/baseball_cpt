@@ -186,6 +186,54 @@ SOME MORE STUFF
 
 R Pacakge: @hdbinseg
 
+A commonly employed method for detecting changes over time involves the CUSUM statistic in binary segmentation, which creates a tree diagram, dividing the time series after successfully identifying a change point until no further change points are detected. The magnitude of the CUSUM difference between two segments generally indicates a potential change point, depending on the assumptions and statistical tests applied to the time series. While this process works well for a single time series, detecting change points across a panel of multiple time series requires a more comprehensive approach. @Cho2016 introduced the double CUSUM (DC) algorithm, assuming there are $n$ time series, all of the same length $T$, with unknown common change point locations. This algorithm utilizes the CUSUM values of multiple time series $(j = 1, \dots, n)$ to cross-sectionally compare time segments for potential change points.
+
+To achieve this, Cho's DC statistic involves ordered CUSUM values for a given time location, favoring larger values as potential change point candidates. It incorporates a partial thresholding of the smaller ordered CUSUM values, effectively representing a scaled average of the most prominent values at a given location across all "n" time series. Maximizing the DC statistic across all time series and potential time locations results in a test statistic for detecting a change point. This test statistic is then compared against a specific testing criterion, denoted as $\pi_{n,T}^\phi$, leading to the partitioning of time series and the formation of a tree structure based on the detected change points.
+
+To determine the testing criterion $\pi_{n,T}^\phi$, a Generalized Dynamic Factor Model (GDFM) bootstrapping algorithm is employed, accounting for potential correlations within and between high-dimensional time series. This methodology enables the detection of second-order change points, utilizing methodology from @ChoFryzlewwicz2014 Haar wavelet periodograms and cross-periodograms, as opposed to the traditional CUSUM statistic. For further details, refer to @Cho2016 and @ChoFryzlewwicz2014.
+
+A commonly employed method for detecting changes over time involves the
+CUSUM statistic in binary segmentation, which creates a tree diagram,
+dividing the time series after successfully identifying a change point
+until no further change points are detected. The magnitude of the CUSUM
+difference between two segments generally indicates a potential change
+point, depending on the assumptions and statistical tests applied to the
+time series. While this process works well for a single time series,
+detecting change points across a panel of multiple time series requires
+a more comprehensive approach. H. Cho
+(\protect\hyperlink{ref-Cho2016}{2016}) introduced the double CUSUM (DC)
+algorithm, assuming there are \(n\) time series, all of the same length
+\(T\), with unknown common change point locations. This algorithm
+utilizes the CUSUM values of multiple time series \((j = 1, \dots, n)\)
+to cross-sectionally compare time segments for potential change points.
+
+To achieve this, Cho's DC statistic involves ordered CUSUM values for a
+given time location, favoring larger values as potential change point
+candidates. It incorporates a partial thresholding of the smaller
+ordered CUSUM values, effectively representing a scaled average of the
+most prominent values at a given location across all ``n'' time series.
+Maximizing the DC statistic across all time series and potential time
+locations results in a test statistic for detecting a change point. This
+test statistic is then compared against a specific testing criterion,
+denoted as \(\pi_{n,T}^\phi\), leading to the partitioning of time
+series and the formation of a tree structure based on the detected
+change points.
+
+To determine the testing criterion \(\pi_{n,T}^\phi\), a Generalized
+Dynamic Factor Model (GDFM) bootstrapping algorithm is employed,
+accounting for potential correlations within and between
+high-dimensional time series. This methodology enables the detection of
+second-order change points, utilizing methodology from H. Cho and
+Fryzlewicz (\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014}) Haar
+wavelet periodograms and cross-periodograms, as opposed to the
+traditional CUSUM statistic. For further details, refer to H. Cho
+(\protect\hyperlink{ref-Cho2016}{2016}) and H. Cho and Fryzlewicz
+(\protect\hyperlink{ref-ChoFryzlewwicz2014}{2014}).
+
+#Data
+We obtained multi-year baseball statistics from GREG??. Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. To ensure consistency in our methodology, it was necessary for each team to have existed from 1900 until the end of the dataset in 2020. This timeframe of 120 years, denoted as T, encompassed a total of 16 franchise teams, namely NYY, BOS, LAD, ATL, CHW, CHC, CIN, CLE, DET, BAL, SFG, OAK, PHI, PIT, STL, and MIN. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (cite mice/cart) to fill in the missing values and ensure consistent data across all analyses.
+
+
 # Results
 ```{r echo = FALSE}
 library(tidyverse)
@@ -241,6 +289,60 @@ ggplot(old_teams_full, aes(year_id, hr, color = franch_id)) +
 load("./baseball_cpt/data/teams_cpt_time_df.RData")
 teams_cpt_time_df
 ```
+
+## Tables
+
+|Mean/Variance CPT     |Franchise | Change Point Year |
+|:--------|:---------|:----------------|
+|mean     |ANA       |1977             |
+|mean     |ATL       |1900, 1990       |
+|mean     |BAL       |1959, 1999       |
+|mean     |BOS       |1918, 1937       |
+|mean     |CHC       |1891             |
+|mean     |CHW       |1970             |
+|mean     |CIN       |1918, 1952       |
+|mean     |CLE       |1944, 1959, 1993 |
+|mean     |DET       |1958, 1988       |
+|mean     |FLA       |2011             |
+|mean     |HOU       |1999             |
+|mean     |KCR       |1997             |
+|mean     |LAD       |1940, 1961       |
+|mean     |MIL       |1977, 1996       |
+|mean     |MIN       |1959             |
+|mean     |PHI       |1917, 1949       |
+|mean     |PIT       |1939             |
+|mean     |SDP       |1977             |
+|mean     |SEA       |1986, 1999       |
+|mean     |SFG       |1903, 1973       |
+|mean     |STL       |1937             |
+|mean     |TBD       |2007             |
+|mean     |TEX       |1973, 1990       |
+|mean     |WSN       |2011             |
+|variance |ATL       |1887             |
+|variance |BOS       |2008             |
+|variance |CHW       |1969             |
+|variance |CLE       |1966, 1981, 1993 |
+|variance |DET       |1942             |
+|variance |HOU       |2010             |
+|variance |NYM       |1974             |
+|variance |PIT       |1902, 2001       |
+|variance |SDP       |1977             |
+|variance |SFG       |1918             |
+
+|Mean/Variance CPT   |Baseball Statistic     | Change Point Year                    |
+|:--------|:------------|:----------------------|
+|mean     |att_per_game |1945, 1975, 1992       |
+|mean     |bb_per_game  |1927                   |
+|mean     |hr_per_game  |1920, 1946, 1967, 1993 |
+|mean     |r_per_game   |1919, 1940             |
+|mean     |sb_per_game  |1919                   |
+|mean     |so_per_game  |1956, 1993, 2009       |
+|variance |att_per_game |1944, 2008             |
+|variance |hr_per_game  |1927, 1944, 1995, 2007 |
+|variance |r_per_game   |1935                   |
+|variance |sb_per_game  |1919, 1966             |
+|variance |so_per_game  |1990                   |
+
 
 NYY 1918: Babe Ruth got to the Yankees in 1920.  And starting in 1919 they had exactly one losing seasons between 1919 and 1965.  
 BOS 1917, 1929, 1948, 1994: 
