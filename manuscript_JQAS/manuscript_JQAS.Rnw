@@ -86,7 +86,7 @@ Baseball is not the only sport where this type of analysis has been applied.  \c
 
 % # WHAT DID THEY FIND?   ADD MORE HERE.  
 
-All of the previous work mentioned here focuses on change point analysis in {\bf univariate} time series. However, recent methodolgical developments in change point analysis allow for change point analysis in {\bf multivariate} time series, which is the focus of this current manuscript.  This work leverages techniques such as the Double CUSUM Binary Segmentation algorithm (\cite{Cho2016}) and the Sparsified Binary Segmentation algorithm (\cite{ChoFryzlewwicz2014}) to look for change points in Major League Baseball at two main levels.  First, we look for structural changes in the league as a whole across teams to empirically define different eras in baseball.  Second, we look for change points within a team to determine eras of a team.  This second analysis can be used to identify the beginning and end of so called "dynasties", periods of sustained excellent performance by a team.  In addition, we can also identify the opposite, sustained periods of poor performance.  
+All of the previous work mentioned here focuses on change point analysis in {\bf univariate} time series. However, recent methodolgical developments in change point analysis allow for change point analysis in {\bf multivariate} time series, which is the focus of this current manuscript.  This work uses the Double CUSUM Binary Segmentation algorithm (\cite{Cho2016,ChoFryzlewicz2014}) to look for change points in Major League Baseball at two main levels.  First, we look for structural changes in the league as a whole across teams to empirically define different eras in baseball.  Second, we look for change points within a team to determine eras of a team.  This second analysis can be used to identify the beginning and end of so called "dynasties", periods of sustained excellent performance by a team.  In addition, we can also identify the opposite, sustained periods of poor performance.  
 
 % @LeeFort2008: Attendance and the Uncertainty-of-Outcome Hypothesis in Baseball.  Identify Break points in attendance in 1918 and 1945 for both leagues.  For AL only: 1963, 1978, 1994.  For NL only: 1976.  Using Bai and Perron From table 3 in Mills and Fort 2014
 % @MillsFort2014: LEAGUE-LEVEL ATTENDANCE AND OUTCOME UNCERTAINTY IN U.S. PRO SPORTS LEAGUES.  Looks at NHL, NFL, NBA.  Rottenburg 1956 looked at baseball.  Identify break points in NBA, NFL, and NHL.  Table 3
@@ -103,7 +103,7 @@ All of the previous work mentioned here focuses on change point analysis in {\bf
 % <!-- @Nieswiadomy2012 Was there a structural break in Barry Bonds’s Bat?  Looking for structural breaks in Bonds OPS times series. Use the uni root test on monthly data from 86-07.  The identify break points in June 1993 and Sept 2000.  -->
 % 
 % 
-% <!-- In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014). -->
+% <!-- In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewicz2014). -->
 % 
 % <!-- https://onlinelibrary.wiley.com/doi/epdf/10.1111/j.1465-7295.2007.00026.x -->
 % <!-- Fort and Lee 2007: Looks for structural breaks in NBA, NHL, and NFL -->
@@ -124,7 +124,7 @@ All of the previous work mentioned here focuses on change point analysis in {\bf
 % 
 % <!-- The work that is the most closely related to our own is that of @Groothius2017, which looked for structural breaks (Note: the terms "structural breaks" and "change points" are used interchangeably in this manuscript) in univariate times series.   -->
 % 
-% <!-- univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrange Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014). -->
+% <!-- univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrange Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewicz2014). -->
 % 
 % 
 % <!-- https://journals.sagepub.com/doi/10.1177/152700250100200204 -->
@@ -152,7 +152,7 @@ All of the previous work mentioned here focuses on change point analysis in {\bf
 % <!-- Palacios-Huerta I. (2004). Structural changes during a Century of the World’s most popular sport. Statistical Methods and Applications, 13, 241–258 -->
 % <!-- @PalaciosHuerta2004 Structural Breaks in soccer -->
 % 
-% <!-- @Groothius2017 is the most closely related work to ours.  They use univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014).   -->
+% <!-- @Groothius2017 is the most closely related work to ours.  They use univariate time series of the means and SD's of several statistics (i.e. SLUG, HR rate, RBI rate, and batting average) to look for structural breaks via the Lagrane Multiplier (LM) unit root test @LeeandStrazicich2003.  Notably they find structural breaks in slugging percentage in 1921 and 1992.  In contrast to their methods, we use  more modern methods Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewicz2014).   -->
 % 
 % <!-- Fort, Rodney and Young Hoon Lee (2006). “Stationarity and Major League Baseball Attendance Analysis.” Journal of Sports Economics, 7 (4), 408–415.  -->
 % 
@@ -190,8 +190,28 @@ All of the previous work mentioned here focuses on change point analysis in {\bf
 % <!-- https://www.semanticscholar.org/paper/Was-There-a-Structural-Break-in-Barry-Bonds's-Bat-Nieswiadomy-Strazicich/0a32effa10a3d26ea4675efcca3f13229efe0f7d -->
 % 
 
+\section{Data}
+%EXPLAIN DATA NEEDS FOR 1) ERAS and 2) DYNASTIES.
+We obtained multi-year baseball statistics from the Lahman database (\cite{Friendly2021Lahman}). Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. In order to implement the DC algorithm, each time series is required to be the same length.  As a result, when studying eras in our analysis we focus on a set of 16 teams that have all existed over the period from 1900 to 2020 because this period of time covers most of the history of organized professional baseball and there are enough teams that have all existed over this time period to perform meaningful analysis.  If we had instead chosen to extend this period to, for instance, 1890 to 2020, we would only have had XX teams available.   This timeframe of $T=120$ years encompassed a total of 16 franchise teams listed in table \ref{tab:120year:franch}. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (\cite{Vanbuuren1999flexible}) to fill in the missing values and ensure consistent data across all analyses.  (HOW DID WE DO THRE IMPUTATION?  Was is single imputation?  )
+
+For the dynasty analysis we used teams over different periods of time for every year that each team has existed....MORE DETAILS.  
+
+\begin{table}
+\begin{tabular}{|r|}
+Franchise  \\
+\hline
+NYY Full names 
+ NYY, BOS, LAD, ATL, CHW, CHC, CIN, CLE, DET, BAL, SFG, OAK, PHI, PIT, STL, and MIN\\
+\hline
+\end{tabular}
+\caption{}
+\label{tab:120year:franch}
+\end{table}
+
+
+
 \section{Methods}
-%@ChoFryzlewwicz2014 and @Cho2016
+%@ChoFryzlewicz2014 and @Cho2016
 
 R Pacakge: \cite{hdbinseg}
 
@@ -199,20 +219,26 @@ A commonly employed method for detecting changes over time involves the CUSUM st
 
 To achieve this, the DC statistic from \cite{Cho2016} involves ordered CUSUM values for a given time location, favoring larger values as potential change point candidates. It incorporates a partial thresholding of the smaller ordered CUSUM values, effectively representing a scaled average of the most prominent values at a given location across all $n$ (WHY WAS "n" in quotes here?) time series. Maximizing the DC statistic across all time series and potential time locations results in a test statistic for detecting a change point. This test statistic is then compared against a specific testing criterion, denoted as $\pi_{n,T}^\phi$, leading to the partitioning of time series and the formation of a tree structure based on the detected change points.
 
-To determine the testing criterion $\pi_{n,T}^\phi$, a Generalized Dynamic Factor Model (GDFM) bootstrapping algorithm is employed (CITE XX), accounting for potential correlations within and between high-dimensional time series. This methodology enables the detection of second-order change points, utilizing methodology from \cite{ChoFryzlewwicz2014} Haar wavelet periodograms and cross-periodograms, as opposed to the traditional CUSUM statistic. For further details, refer to \cite{Cho2016} and \cite{ChoFryzlewwicz2014}.  These methods were implemented using the \texttt{hdbinseg} \cite{hdbinseg} in the R programming lanugage (\cite{R2023language}).
+To determine the testing criterion $\pi_{n,T}^\phi$, a Generalized Dynamic Factor Model (GDFM) bootstrapping algorithm is employed (CITE XX), accounting for potential correlations within and between high-dimensional time series. This methodology enables the detection of second-order change points, utilizing methodology from \cite{ChoFryzlewicz2014} Haar wavelet periodograms and cross-periodograms, as opposed to the traditional CUSUM statistic. For further details, refer to \cite{Cho2016} and \cite{ChoFryzlewicz2014}.  These methods were implemented using the \texttt{hdbinseg} \cite{hdbinseg} in the R programming language (\cite{R2023language}).
+
+Discuss somewhere how we can find mean change points and ALSO variance change points.  
+
+SEGUE parageraph Using eras and dynasties:::::::::
+
+Since we are interested in finding where in time these different eras of baseball have occurred, we first examine each baseball statistic of interest as their own analysis for all 16 teams. Those baseball statistics are home runs, strikeouts, balls, stolen bases, runs, and attendance which were all standardized to the number of games played in a season since we are interested in seeing how the different statistics change from season to season. Using the methodology from \cite{ChoFryzlewicz2014} a thresholding parameter was determined from bootstrapping and then used to find where change points in mean and variance existed in the panel of teams data of a given baseball statistic. To examine the idea of changes throughout teams and types of statistics (initially), for each season the average baseball statistic was found from all the teams that year and then an average time series was created of each of the types of statistics of interest. Then the change point methodology was performed on those 6 time series of average statistic types.
+
+Continuing our investigation, we explored the concept of "dynasties" within modern baseball teams, irrespective of their length of a teams existence. A dynasty, in this context, refers to a period characterized by significant success or potentially hardships. Such a dynasty is identified when a team experiences a noticeable change across all their statistics in a given season, whether it be in a positive or negative direction. This approach aligns well with our methodology, as it involves examining panels of time series data encompassing all statistics for a singular team.
+The statistics of interest for this analysis include runs, hits, home runs, balls, strikeouts, runs against, hits against, home runs against, balls against, and strikeouts against. To ensure comparability, these statistics were standardized using the season average and standard deviation derived from all teams present in each respective season. By standardizing the statistics, we capture a team's offensive and defensive performance. Notably, if a team exhibits a high and positive offensive performance, it can be balanced to zero by large and negative defensive statistics when standardized. Therefore, if a team excels in both aspects of the game, it would have numerous time points above zero, whereas underperforming teams would display many below-zero values.For each team, we examined their ten statistics, analyzing both mean and variance changes to identify potential change points. By scrutinizing these indicators, we aimed to uncover shifts in a team's performance and assess their significance within the context of dynasties.
 
 %hdbinseg: Change-Point Analysis of High-Dimensional Time Series via Binary Segmentation
 
-\section{Data}
-We obtained multi-year baseball statistics from the Lahman database (\cite{Friendly2021Lahman}). Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. To ensure consistency in our methodology, it was necessary for each team to have existed from 1900 until the end of the dataset in 2020 (IS THIS BECAUSE THE CHO2016 method requires the time series to be the same length?). This timeframe of 120 years, denoted as T, encompassed a total of 16 franchise teams, namely NYY, BOS, LAD, ATL, CHW, CHC, CIN, CLE, DET, BAL, SFG, OAK, PHI, PIT, STL, and MIN. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (\cite{Vanbuuren1999flexible}) to fill in the missing values and ensure consistent data across all analyses.  (HOW DID WE DO THRE IMPUTATION?  Was is single imputation?  )
 
 
 \section{Results}
 \subsection{Eras}
-Since we are interested in finding where in time these different eras of baseball have occurred, we first examine each baseball statistic of interest as their own analysis for all 16 teams. Those baseball statistics are home runs, strikeouts, balls, stolen bases, runs, and attendance which were all standardized to the number of games played in a season since we are interested in seeing how the different statistics change from season to season. Using the methodology from Cho and Fry (CITE) a thresholding parameter was determined from bootstrapping and then used to find where change points in mean and variance existed in the panel of teams data of a given baseball statistic. To examine the idea of changes throughout teams and types of statistics (initially), for each season the average baseball statistic was found from all the teams that year and then an average time series was created of each of the types of statistics of interest. Then the change point methodology was performed on those 6 time series of average statistic types.
-
-Continuing our investigation, we explored the concept of "dynasties" within modern baseball teams, irrespective of their length of a teams existence. A dynasty, in this context, refers to a period characterized by significant success or potentially hardships. Such a dynasty is identified when a team experiences a noticeable change across all their statistics in a given season, whether it be in a positive or negative direction. This approach aligns well with our methodology, as it involves examining panels of time series data encompassing all statistics for a singular team.
-The statistics of interest for this analysis include runs, hits, home runs, balls, strikeouts, runs against, hits against, home runs against, balls against, and strikeouts against. To ensure comparability, these statistics were standardized using the season average and standard deviation derived from all teams present in each respective season. By standardizing the statistics, we capture a team's offensive and defensive performance. Notably, if a team exhibits a high and positive offensive performance, it can be balanced to zero by large and negative defensive statistics when standardized. Therefore, if a team excels in both aspects of the game, it would have numerous time points above zero, whereas underperforming teams would display many below-zero values.For each team, we examined their ten statistics, analyzing both mean and variance changes to identify potential change points. By scrutinizing these indicators, we aimed to uncover shifts in a team's performance and assess their significance within the context of dynasties.
+Blah blah 
+\subsection{Dynasties}
+Blah blah 
 
 \begin{table}
 \begin{tabular}{|r|r|}
@@ -399,6 +425,7 @@ MIN 1919 1942
 Pearl Harbor was 1941.  So US was in war in 1942.  
 
 \section{Conclusions}
+Baseball researchers 
 
 
 \section{Acknowledgements}
