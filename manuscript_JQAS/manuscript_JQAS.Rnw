@@ -54,44 +54,45 @@
 \affil[1]{\protect\raggedright 
 Loyola University Chicago, Department of Mathematics and Statistics, Chicago, IL, USA, e-mail: mwhalen@luc.edu}
 \affil[2]{\protect\raggedright 
-Texas, Department, City, Country of second author and third author, e-mail: author\_two@xx.yz, author\_three@xx.yz}
+University of Texas at Austin, Department of Kinesiology and Health Education, Austin, TX, USA, e-mail: brian.mills@austin.utexas.edu}
 \affil[3]{\protect\raggedright 
 Loyola University Chicago, Department of Mathematics and Statistics, Chicago, IL, USA, e-mail: gmatthews1@luc.edu}
+	
 	
 %\communicated{...}
 %\dedication{...}
 	
-\abstract{Please insert your abstract here (approx. 200 words). Remember that online systems rely heavily on the content of titles and abstracts to identify articles in electronic bibliographic databases and search engines. Abstracts give a clear indication of the nature and the range of the results in the paper.}
+\abstract{}
 
-\keywords{Please insert your keywords here, separated by commas.}
+\keywords{Baseball, Change Point Analysis}
 
 \maketitle
 	
 	
 \section{Introduction} 
 
-The first professional baseball team in the United States, the Cinicnnati Red Stockings, was formed in 1869 (\cite{BBHOF1869}).   Many leagues came and went in the late 1800s, but National League (NL), formed in 1876, emerged as the predominant league of the time.  A few decades later, the American League (AL) began growing in popularity and eventually reached an agreement with the NL to be the two major leagues of baseball with the winner of each league playing in the World Series starting in 1903.  
+The first professional baseball team in the United States, the Cincinnati Red Stockings, was formed in 1869 (\cite{BBHOF1869}).   Many leagues came and went in the late 1800s, but National League (NL), formed in 1876, emerged as the predominant league of the time.  A few decades later, the American League (AL) began growing in popularity and eventually reached an agreement with the NL to be the two major leagues of baseball with the winner of each league playing in the World Series starting in 1903.  
 
 Throughout the history of baseball in the United States, the game has gone through many changes and distinct eras.  For example, the time period between approximately 1900-1919 is often referred to as the "Dead Ball Era" and was marked by low scoring games and dominant pitching.  Another more recent example would be the "Steroid Era" which lasted from approximately 1994 through 2005 and was characterized by a rapid increase in power hitting largely attributed to players using performance enhancing drugs. 
 
 More specifically, \cite{Woltring2018} mentions six eras of modern baseball": 
 "Baseball has endured much change over the course of its history, and because of constant change, the modern era of baseball has been segmented into six distinct sub-eras. A common list presented at Baseball-Reference described the eras as the Dead Ball Era (1901-1919), the Live Ball Era (1920-1941), the Integration Era (1942-1960), the Expansion Era (1961-1976), the Free Agency Era (1977-1993) and the Long Ball/Steroid Era (1994-2005)."  \cite{Woltring2018} notes that they name a seventh era after 2006, which they term the Post Steroid Era.  
 
-While many baseball writers have attempted to define the different eras of baseball, there has also been some academic work that has sought to empirically define eras in baseball.  \cite{Groothius2017} looked for structural breaks in univariate times series of performance measures over the period from 1871-2020.  They analyzed four statistics: slugging percentage (SLG, home run (HR) rate, batting average (BA), and runs batted in (RBI) rate.   For each of these statistics, the computed the mean and standard deviation (SD) across all players who had at least 100 at bats in a given season to yield a univariate time series for each of these statistics.  They then used the Lagrange Multiplier (LM) unit root test proposed in @LeeandStrazicich2003 to find structural breaks.  They identified structural breaks in slugging percentage in 1921 and 1992, the first of which marks the end of the Dead Ball Era and the latter corresponding to the start of the steroid era. 
+While many baseball writers have attempted to define the different eras of baseball, there has also been some academic work that has sought to empirically define eras in baseball.  \cite{Groothius2017} looked for structural breaks in univariate times series of performance measures over the period from 1871-2020.  They analyzed four statistics: slugging percentage (SLG, home run (HR) rate, batting average (BA), and runs batted in (RBI) rate.   For each of these statistics, the computed the mean and standard deviation (SD) across all players who had at least 100 at bats in a given season to yield a univariate time series for each of these statistics.  They then used the Lagrange Multiplier (LM) unit root test proposed in \cite{LeeandStrazicich2003} to find structural breaks.  They identified structural breaks in slugging percentage in 1921 and 1992, the first of which marks the end of the Dead Ball Era and the latter corresponding to the start of the steroid era. 
 
-\cite{LeeFort2005} looks for structural changes in competitive balance of the two league American and National.  Use methods from Andrews1993, Bai1997, 1999 and Bai and Perron 1998 and 2003 to look for break points between 1901 -1999.  Theuy measure competitive balance in two ways: 1) \cite{Noll1988} and \cite{Scully1989} and 2) Lee 2004. They find break point sin competitive balance in 1912, 1926, and 1933 for the NL and in 1926 and 1957 in the AL.  
+\cite{LeeFort2005} looks for structural changes in competitive balance of the two league American and National.  Use methods from Andrews1993, Bai1997, 1999 and Bai and Perron 1998 and 2003 to look for break points between 1901 -1999.  They measure competitive balance in two ways: 1) \cite{Noll1988} and \cite{Scully1989} and 2) Lee 2004. They find break point sin competitive balance in 1912, 1926, and 1933 for the NL and in 1926 and 1957 in the AL.  
 
 Baseball is not the only sport where this type of analysis has been applied.  \cite{PalaciosHuerta2004} looked for structural changes in soccer using data from British soccer leagues through 1996.  They had data from division I (Premier League) and II starting in the late 1800s, and data from lower divisions III and IV from just after WWII starting in 1947.  They identify a number of change points.  Notably they identify a change point in the mean of margin of victory in 1925 related to the change in the definition of offsides (changed from 3 players to 2 players), an change points in the variability of number of goals in the early 1980s and 1992 corresponding to the change in number of points for a win (i.e. went from 2 points to 3 points) and a change in the backpass rule, respectively.  \cite{FortLee2007} looked for structural breaks in major North American sports other than baseball (i.e. basketball (NBA), hockey (NHL), and American football (NFL)).  They identified a number of change points related to competitive balance in each sport that often, though not always, correspond to league expansion, league mergers, or other major events in a sport (e.g. increased number of foreign players in the NBA in the late 1990s/early 2000s).
 
 % # WHAT DID THEY FIND?   ADD MORE HERE.  
 
-All of the previous work mentioned here focuses on change point analysis in {\bf univariate} time series. However, recent methodolgical developments in change point analysis allow for change point analysis in {\bf multivariate} time series, which is the focus of this current manuscript.  This work leverages techniques such as the Double CUSUM Binary Segmentation algorithm (@Cho2016) and the Sparsified Binary Segmentation algorithm (@ChoFryzlewwicz2014) to look for change points in Major League Baseball at two main levels.  First, we look for structural changes in the league as a whole across teams to empirically define different eras in baseball.  Second, we look for change points within a team to determine eras of a team.  This second analysis can be used to identify the beginning and end of so called "dynasties", periods of sustained excellent performance by a team.  In addition, we can also identify the opposite, sustained periods of poor performance.  
+All of the previous work mentioned here focuses on change point analysis in {\bf univariate} time series. However, recent methodolgical developments in change point analysis allow for change point analysis in {\bf multivariate} time series, which is the focus of this current manuscript.  This work leverages techniques such as the Double CUSUM Binary Segmentation algorithm (\cite{Cho2016}) and the Sparsified Binary Segmentation algorithm (\cite{ChoFryzlewwicz2014}) to look for change points in Major League Baseball at two main levels.  First, we look for structural changes in the league as a whole across teams to empirically define different eras in baseball.  Second, we look for change points within a team to determine eras of a team.  This second analysis can be used to identify the beginning and end of so called "dynasties", periods of sustained excellent performance by a team.  In addition, we can also identify the opposite, sustained periods of poor performance.  
 
-@LeeFort2008: Attendance and the Uncertainty-of-Outcome Hypothesis in Baseball.  Identify Break points in attendance in 1918 and 1945 for both leagues.  For AL only: 1963, 1978, 1994.  For NL only: 1976.  Using Bai and Perron From table 3 in Mills and Fort 2014
-@MillsFort2014: LEAGUE-LEVEL ATTENDANCE AND OUTCOME UNCERTAINTY IN U.S. PRO SPORTS LEAGUES.  Looks at NHL, NFL, NBA.  Rottenburg 1956 looked at baseball.  Identify break points in NBA, NFL, and NHL.  Table 3
-@MillsSalaga2015: NCAA Basketball: League balance using stats.  
-@MillsFort2018: team-level: Attendence.  
-@SalagaFort2017: College football
+% @LeeFort2008: Attendance and the Uncertainty-of-Outcome Hypothesis in Baseball.  Identify Break points in attendance in 1918 and 1945 for both leagues.  For AL only: 1963, 1978, 1994.  For NL only: 1976.  Using Bai and Perron From table 3 in Mills and Fort 2014
+% @MillsFort2014: LEAGUE-LEVEL ATTENDANCE AND OUTCOME UNCERTAINTY IN U.S. PRO SPORTS LEAGUES.  Looks at NHL, NFL, NBA.  Rottenburg 1956 looked at baseball.  Identify break points in NBA, NFL, and NHL.  Table 3
+% @MillsSalaga2015: NCAA Basketball: League balance using stats.  
+% @MillsFort2018: team-level: Attendence.  
+% @SalagaFort2017: College football
 
 
 % <!-- Just Notes:  -->
@@ -113,7 +114,7 @@ All of the previous work mentioned here focuses on change point analysis in {\bf
 % 
 % <!-- https://thesportjournal.org/article/examining-perceptions-of-baseballs-eras/ -->
 
-SOME MORE STUFF
+%SOME MORE STUFF
 
 
 % <!-- https://pubmed.ncbi.nlm.nih.gov/30747582/? -->
@@ -190,57 +191,89 @@ SOME MORE STUFF
 % 
 
 \section{Methods}
-@ChoFryzlewwicz2014 and @Cho2016
+%@ChoFryzlewwicz2014 and @Cho2016
 
-R Pacakge: @hdbinseg
+R Pacakge: \cite{hdbinseg}
 
-A commonly employed method for detecting changes over time involves the CUSUM statistic in binary segmentation, which creates a tree diagram, dividing the time series after successfully identifying a change point until no further change points are detected. The magnitude of the CUSUM difference between two segments generally indicates a potential change point, depending on the assumptions and statistical tests applied to the time series. While this process works well for a single time series, detecting change points across a panel of multiple time series requires a more comprehensive approach. @Cho2016 introduced the double CUSUM (DC) algorithm, assuming there are $n$ time series, all of the same length $T$, with unknown common change point locations. This algorithm utilizes the CUSUM values of multiple time series $(j = 1, \dots, n)$ to cross-sectionally compare time segments for potential change points.
+A commonly employed method for detecting changes over time involves the CUSUM statistic in binary segmentation (CITE XX), which creates a tree diagram, dividing the time series after successfully identifying a change point until no further change points are detected. The magnitude of the CUSUM difference between two segments generally indicates a potential change point, depending on the assumptions and statistical tests applied to the time series. While this process works well for a single time series, detecting change points across a panel of multiple time series requires a more comprehensive approach. \cite{Cho2016} introduced the double CUSUM (DC) algorithm, assuming there are $n$ time series, all of the same length $T$, with unknown common change point locations. This algorithm utilizes the CUSUM values of multiple time series $(j = 1, \dots, n)$ to cross-sectionally compare time segments for potential change points.
 
-To achieve this, Cho's DC statistic involves ordered CUSUM values for a given time location, favoring larger values as potential change point candidates. It incorporates a partial thresholding of the smaller ordered CUSUM values, effectively representing a scaled average of the most prominent values at a given location across all "n" time series. Maximizing the DC statistic across all time series and potential time locations results in a test statistic for detecting a change point. This test statistic is then compared against a specific testing criterion, denoted as $\pi_{n,T}^\phi$, leading to the partitioning of time series and the formation of a tree structure based on the detected change points.
+To achieve this, the DC statistic from \cite{Cho2016} involves ordered CUSUM values for a given time location, favoring larger values as potential change point candidates. It incorporates a partial thresholding of the smaller ordered CUSUM values, effectively representing a scaled average of the most prominent values at a given location across all $n$ (WHY WAS "n" in quotes here?) time series. Maximizing the DC statistic across all time series and potential time locations results in a test statistic for detecting a change point. This test statistic is then compared against a specific testing criterion, denoted as $\pi_{n,T}^\phi$, leading to the partitioning of time series and the formation of a tree structure based on the detected change points.
 
-To determine the testing criterion $\pi_{n,T}^\phi$, a Generalized Dynamic Factor Model (GDFM) bootstrapping algorithm is employed, accounting for potential correlations within and between high-dimensional time series. This methodology enables the detection of second-order change points, utilizing methodology from @ChoFryzlewwicz2014 Haar wavelet periodograms and cross-periodograms, as opposed to the traditional CUSUM statistic. For further details, refer to @Cho2016 and @ChoFryzlewwicz2014.
+To determine the testing criterion $\pi_{n,T}^\phi$, a Generalized Dynamic Factor Model (GDFM) bootstrapping algorithm is employed (CITE XX), accounting for potential correlations within and between high-dimensional time series. This methodology enables the detection of second-order change points, utilizing methodology from \cite{ChoFryzlewwicz2014} Haar wavelet periodograms and cross-periodograms, as opposed to the traditional CUSUM statistic. For further details, refer to \cite{Cho2016} and \cite{ChoFryzlewwicz2014}.  These methods were implemented using the \texttt{hdbinseg} \cite{hdbinseg} in the R programming lanugage (\cite{R2023language}).
 
-A commonly employed method for detecting changes over time involves the
-CUSUM statistic in binary segmentation, which creates a tree diagram,
-dividing the time series after successfully identifying a change point
-until no further change points are detected. The magnitude of the CUSUM
-difference between two segments generally indicates a potential change
-point, depending on the assumptions and statistical tests applied to the
-time series. While this process works well for a single time series,
-detecting change points across a panel of multiple time series requires
-a more comprehensive approach. H. Cho \cite{Cho2016} introduced the double CUSUM (DC) algorithm, assuming there are $n$ time series, all of the same length
-$T$, with unknown common change point locations. This algorithm
-utilizes the CUSUM values of multiple time series $(j = 1, \dots, n)$
-to cross-sectionally compare time segments for potential change points.
-
-To achieve this, Cho's DC statistic involves ordered CUSUM values for a
-given time location, favoring larger values as potential change point
-candidates. It incorporates a partial thresholding of the smaller
-ordered CUSUM values, effectively representing a scaled average of the
-most prominent values at a given location across all ``n'' time series.
-Maximizing the DC statistic across all time series and potential time
-locations results in a test statistic for detecting a change point. This
-test statistic is then compared against a specific testing criterion,
-denoted as $\pi_{n,T}^\phi$, leading to the partitioning of time
-series and the formation of a tree structure based on the detected
-change points.
-
-To determine the testing criterion $\pi_{n,T}^\phi$, a Generalized
-Dynamic Factor Model (GDFM) bootstrapping algorithm is employed,
-accounting for potential correlations within and between
-high-dimensional time series. This methodology enables the detection of
-second-order change points, utilizing methodology from H. Cho and
-Fryzlewicz (\cite{ChoFryzlewwicz2014}). Haar
-wavelet periodograms and cross-periodograms, as opposed to the
-traditional CUSUM statistic. For further details, refer to H. Cho
-(\cite{Cho2016}) and H. Cho and Fryzlewicz
-(\cite{ChoFryzlewwicz2014}).
+%hdbinseg: Change-Point Analysis of High-Dimensional Time Series via Binary Segmentation
 
 \section{Data}
-We obtained multi-year baseball statistics from GREG??. Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. To ensure consistency in our methodology, it was necessary for each team to have existed from 1900 until the end of the dataset in 2020. This timeframe of 120 years, denoted as T, encompassed a total of 16 franchise teams, namely NYY, BOS, LAD, ATL, CHW, CHC, CIN, CLE, DET, BAL, SFG, OAK, PHI, PIT, STL, and MIN. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (cite mice/cart) to fill in the missing values and ensure consistent data across all analyses.
+We obtained multi-year baseball statistics from the Lahman database (\cite{Friendly2021Lahman}). Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. To ensure consistency in our methodology, it was necessary for each team to have existed from 1900 until the end of the dataset in 2020 (IS THIS BECAUSE THE CHO2016 method requires the time series to be the same length?). This timeframe of 120 years, denoted as T, encompassed a total of 16 franchise teams, namely NYY, BOS, LAD, ATL, CHW, CHC, CIN, CLE, DET, BAL, SFG, OAK, PHI, PIT, STL, and MIN. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (\cite{Vanbuuren1999flexible}) to fill in the missing values and ensure consistent data across all analyses.  (HOW DID WE DO THRE IMPUTATION?  Was is single imputation?  )
 
 
-\section{Methods}
+\section{Results}
+\subsection{Eras}
+Since we are interested in finding where in time these different eras of baseball have occurred, we first examine each baseball statistic of interest as their own analysis for all 16 teams. Those baseball statistics are home runs, strikeouts, balls, stolen bases, runs, and attendance which were all standardized to the number of games played in a season since we are interested in seeing how the different statistics change from season to season. Using the methodology from Cho and Fry (CITE) a thresholding parameter was determined from bootstrapping and then used to find where change points in mean and variance existed in the panel of teams data of a given baseball statistic. To examine the idea of changes throughout teams and types of statistics (initially), for each season the average baseball statistic was found from all the teams that year and then an average time series was created of each of the types of statistics of interest. Then the change point methodology was performed on those 6 time series of average statistic types.
+
+Continuing our investigation, we explored the concept of "dynasties" within modern baseball teams, irrespective of their length of a teams existence. A dynasty, in this context, refers to a period characterized by significant success or potentially hardships. Such a dynasty is identified when a team experiences a noticeable change across all their statistics in a given season, whether it be in a positive or negative direction. This approach aligns well with our methodology, as it involves examining panels of time series data encompassing all statistics for a singular team.
+The statistics of interest for this analysis include runs, hits, home runs, balls, strikeouts, runs against, hits against, home runs against, balls against, and strikeouts against. To ensure comparability, these statistics were standardized using the season average and standard deviation derived from all teams present in each respective season. By standardizing the statistics, we capture a team's offensive and defensive performance. Notably, if a team exhibits a high and positive offensive performance, it can be balanced to zero by large and negative defensive statistics when standardized. Therefore, if a team excels in both aspects of the game, it would have numerous time points above zero, whereas underperforming teams would display many below-zero values.For each team, we examined their ten statistics, analyzing both mean and variance changes to identify potential change points. By scrutinizing these indicators, we aimed to uncover shifts in a team's performance and assess their significance within the context of dynasties.
+
+\begin{table}
+\begin{tabular}{ccc}
+mean/ var & TM & year \\
+mean & ANA & 1977
+\end{tabular}
+\caption{F}
+\begin{table}
+
+|Mean/Variance CPT     |Franchise | Change Point Year |
+|:--------|:---------|:----------------|
+|mean     |ANA       |1977             |
+|mean     |ATL       |1900, 1990       |
+|mean     |BAL       |1959, 1999       |
+|mean     |BOS       |1918, 1937       |
+|mean     |CHC       |1891             |
+|mean     |CHW       |1970             |
+|mean     |CIN       |1918, 1952       |
+|mean     |CLE       |1944, 1959, 1993 |
+|mean     |DET       |1958, 1988       |
+|mean     |FLA       |2011             |
+|mean     |HOU       |1999             |
+|mean     |KCR       |1997             |
+|mean     |LAD       |1940, 1961       |
+|mean     |MIL       |1977, 1996       |
+|mean     |MIN       |1959             |
+|mean     |PHI       |1917, 1949       |
+|mean     |PIT       |1939             |
+|mean     |SDP       |1977             |
+|mean     |SEA       |1986, 1999       |
+|mean     |SFG       |1903, 1973       |
+|mean     |STL       |1937             |
+|mean     |TBD       |2007             |
+|mean     |TEX       |1973, 1990       |
+|mean     |WSN       |2011             |
+|variance |ATL       |1887             |
+|variance |BOS       |2008             |
+|variance |CHW       |1969             |
+|variance |CLE       |1966, 1981, 1993 |
+|variance |DET       |1942             |
+|variance |HOU       |2010             |
+|variance |NYM       |1974             |
+|variance |PIT       |1902, 2001       |
+|variance |SDP       |1977             |
+|variance |SFG       |1918             |
+
+|Mean/Variance CPT   |Baseball Statistic     | Change Point Year                    |
+|:--------|:------------|:----------------------|
+|mean     |att_per_game |1945, 1975, 1992       |
+|mean     |bb_per_game  |1927                   |
+|mean     |hr_per_game  |1920, 1946, 1967, 1993 |
+|mean     |r_per_game   |1919, 1940             |
+|mean     |sb_per_game  |1919                   |
+|mean     |so_per_game  |1956, 1993, 2009       |
+|variance |att_per_game |1944, 2008             |
+|variance |hr_per_game  |1927, 1944, 1995, 2007 |
+|variance |r_per_game   |1935                   |
+|variance |sb_per_game  |1919, 1966             |
+|variance |so_per_game  |1990                   |
+
+
 <<echo = FALSE, message = FALSE, warning = FALSE>>=
 library(tidyverse)
 library(janitor)
@@ -289,8 +322,6 @@ ggplot(old_teams_full, aes(year_id, hr, color = franch_id)) +
 @
 
 
-
-\section{results}
 %
 % # <<>>=
 % # load("./baseball_cpt/data/teams_cpt_time_df.RData")
@@ -338,7 +369,7 @@ MIN 1919 1942
 
 Pearl Harbor was 1941.  So US was in war in 1942.  
 
-
+\section{Conclusions}
 
 
 \section{Acknowledgements}

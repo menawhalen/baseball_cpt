@@ -156,3 +156,10 @@ cpt_szn <- bind_rows(tibble(year = cpt_years, cpt_stat = "mean"),
 ggplot(szn_ave) +
   geom_line(aes(year_id, value, color = stat)) +
   geom_vline(data = cpt_szn, aes(xintercept = year, linetype = cpt_stat))
+
+
+
+bind_rows(time_cpts, time_cpts_var) %>% 
+  group_by(change, variable) %>% 
+  summarise(cpt = paste(years, collapse = ", ")) %>% 
+  kableExtra::kable(format = "markdown")

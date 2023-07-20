@@ -109,3 +109,10 @@ std_teams %>%
   geom_line() +
   geom_vline(data = total_values, aes(xintercept = years, linetype = type)) +
   facet_wrap(~franch_id, scales = "free_x")
+
+
+## print out table of results
+total_values %>% 
+  group_by(type, franch_id) %>% 
+  summarise(cpt = paste(years, collapse = ", ")) %>% 
+  kableExtra::kable(format = "markdown")
