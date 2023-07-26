@@ -25,8 +25,9 @@
 \newtheorem{example}{Example}
 \newtheorem{remark}{Remark}
 
+\usepackage{Sweave}
 \begin{document}
-\SweaveOpts{concordance=TRUE}
+\input{manuscript_JQAS-concordance}
 
 	
 %%%--------------------------------------------%%%
@@ -193,105 +194,30 @@ All of the previous work mentioned here focuses on change point analysis in {\bf
 
 \section{Data}
 %EXPLAIN DATA NEEDS FOR 1) ERAS and 2) DYNASTIES.
-We obtained multi-year baseball statistics from the Lahman database (\cite{Friendly2021Lahman}). Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. In order to implement the DC algorithm, each time series is required to be the same length.  As a result, when studying eras in our analysis we focus on a set of 16 teams that have all existed over the period from 1900 to 2020 because this period of time covers most of the history of organized professional baseball and there are enough teams that have all existed over this time period to perform meaningful analysis.  If we had instead chosen to extend this period to, for instance, 1890 to 2020, we would only have had XX teams available.   This timeframe of $T=120$ years encompassed a total of 16 franchise teams listed in table \ref{tab:120year:franch}. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (\cite{Vanbuuren1999flexible}) to fill in the missing values and ensure consistent data across all analyses.  (HOW DID WE DO THRE IMPUTATION?  Was is single imputation? I think it was 5 the default ? But we can change it ???  )
+We obtained multi-year baseball statistics from the Lahman database (\cite{Friendly2021Lahman}). Over the course of the sport's history, numerous statistics have been collected, and for our analysis, we focused on year-end statistics pertaining to the teams. In order to implement the DC algorithm, each time series is required to be the same length.  As a result, when studying eras in our analysis we focus on a set of 16 teams that have all existed over the period from 1900 to 2020 because this period of time covers most of the history of organized professional baseball and there are enough teams that have all existed over this time period to perform meaningful analysis.  If we had instead chosen to extend this period to, for instance, 1890 to 2020, we would only have had XX teams available.   This timeframe of $T=120$ years encompassed a total of 16 franchise teams listed in table \ref{tab:120year:franch}. The statistics of interest for these teams include runs, hits, home runs, balls, strikeouts, at-bats, stolen bases, number of games played in a season, attendance, runs against, hits against, home runs against, balls against, and strikeouts against. However, a few statistics, such as balls, stolen bases, strikeouts, and attendance, had missing data for certain years. To address this, we employed multiple imputations using classification and regression trees (\cite{Vanbuuren1999flexible}) to fill in the missing values and ensure consistent data across all analyses.  (HOW DID WE DO THRE IMPUTATION?  Was is single imputation?  )
 
-Since we are interested in finding where in time these different eras of baseball have occurred we looked across different statistics collected during games over the last 120 years. These baseball statistic of interest will be analyzed individually comparing each of the 16 teams across the time period. Those baseball statistics are home runs, strikeouts, balls, stolen bases, runs, and attendance which were all standardized to the number of games played in a season since we are interested in seeing how the different statistics change from season to season. These baseball statistics encompass key performance metrics of the game that have marked changes in the sport as shown by previous research.
+For the dynasty analysis we used teams over different periods of time for every year that each team has existed....MORE DETAILS.  
 
-Continuing our investigation, we explored the concept of "dynasties" within modern baseball teams, irrespective of their length of a teams existence. A dynasty, in this context, refers to a period characterized by significant success or potentially hardships. Such a dynasty is identified when a team experiences a noticeable change across all their statistics in a given season, whether it be in a positive or negative direction. This approach aligns well with our methodology, as it involves examining panels of time series data encompassing all statistics for a singular team. The statistics of interest for this analysis include runs, hits, home runs, balls, strikeouts, runs against, hits against, home runs against, balls against, and strikeouts against. To ensure comparability, these statistics were standardized using the season average and standard deviation derived from all teams present in each respective season. By standardizing the statistics, we capture a team's offensive and defensive performance. Notably, if a team exhibits a high and positive offensive performance, it can be balanced to zero by large and negative defensive statistics when standardized. Therefore, if a team excels in both aspects of the game, it would have numerous time points above zero, whereas underperforming teams would display many below-zero values.For each team, we examined their ten statistics, analyzing both mean and variance changes to identify potential change points. By scrutinizing these indicators, we aimed to uncover shifts in a team's performance and assess their significance within the context of dynasties.
-
-KEEP THE NAMES YOU WANT
-\begin{tabular}{c|c}
+\begin{table}
+\begin{tabular}{|r|}
+Franchise  \\
 \hline
-Franchise Label & (Modern??) Team Name\\
-\hline
-ATL & Boston Beaneaters\\
-\hline
-ATL & Boston Doves\\
-\hline
-ATL & Boston Rustlers\\
-\hline
-ATL & Boston Braves\\
-\hline
-ATL & Boston Bees\\
-\hline
-ATL & Milwaukee Braves\\
-\hline
-ATL & Atlanta Braves\\
-\hline
-BAL & Milwaukee Brewers\\
-\hline
-BAL & St. Louis Browns\\
-\hline
-BAL & Baltimore Orioles\\
-\hline
-BOS & Boston Americans\\
-\hline
-BOS & Boston Red Sox\\
-\hline
-CHC & Chicago Orphans\\
-\hline
-CHC & Chicago Cubs\\
-\hline
-CHW & Chicago White Sox\\
-\hline
-CIN & Cincinnati Reds\\
-\hline
-CIN & Cincinnati Redlegs\\
-\hline
-CLE & Cleveland Blues\\
-\hline
-CLE & Cleveland Bronchos\\
-\hline
-CLE & Cleveland Naps\\
-\hline
-CLE & Cleveland Indians\\
-\hline
-DET & Detroit Tigers\\
-\hline
-LAD & Brooklyn Superbas\\
-\hline
-LAD & Brooklyn Dodgers\\
-\hline
-LAD & Brooklyn Robins\\
-\hline
-LAD & Los Angeles Dodgers\\
-\hline
-MIN & Washington Senators\\
-\hline
-MIN & Minnesota Twins\\
-\hline
-NYY & Baltimore Orioles\\
-\hline
-NYY & New York Highlanders\\
-\hline
-NYY & New York Yankees\\
-\hline
-OAK & Philadelphia Athletics\\
-\hline
-OAK & Kansas City Athletics\\
-\hline
-OAK & Oakland Athletics\\
-\hline
-PHI & Philadelphia Phillies\\
-\hline
-PHI & Philadelphia Blue Jays\\
-\hline
-PIT & Pittsburgh Pirates\\
-\hline
-SFG & New York Giants\\
-\hline
-SFG & San Francisco Giants\\
-\hline
-STL & St. Louis Cardinals\\
+NYY Full names 
+ NYY, BOS, LAD, ATL, CHW, CHC, CIN, CLE, DET, BAL, SFG, OAK, PHI, PIT, STL, and MIN\\
 \hline
 \end{tabular}
+\caption{}
+\label{tab:120year:franch}
+\end{table}
+
+
 
 \section{Methods}
 %@ChoFryzlewicz2014 and @Cho2016
 
 R Pacakge: \cite{hdbinseg}
 
-A commonly employed method for detecting changes over time involves the CUSUM statistic in binary segmentation \cite{bai_1997}, \cite{cho_fryzlewicz2012}, which creates a tree diagram, dividing the time series after successfully identifying a change point until no further change points are detected. The magnitude of the CUSUM difference between two segments generally indicates a potential change point, depending on the assumptions and statistical tests applied to the time series. While this process works well for a single time series, detecting change points across a panel of multiple time series requires a more comprehensive approach. \cite{Cho2016} introduced the double CUSUM (DC) algorithm, assuming there are $n$ time series, all of the same length $T$, with unknown common change point locations. This algorithm utilizes the CUSUM values of multiple time series $(j = 1, \dots, n)$ to cross-sectionally compare time segments for potential change points.
+A commonly employed method for detecting changes over time involves the CUSUM statistic in binary segmentation (CITE XX), which creates a tree diagram, dividing the time series after successfully identifying a change point until no further change points are detected. The magnitude of the CUSUM difference between two segments generally indicates a potential change point, depending on the assumptions and statistical tests applied to the time series. While this process works well for a single time series, detecting change points across a panel of multiple time series requires a more comprehensive approach. \cite{Cho2016} introduced the double CUSUM (DC) algorithm, assuming there are $n$ time series, all of the same length $T$, with unknown common change point locations. This algorithm utilizes the CUSUM values of multiple time series $(j = 1, \dots, n)$ to cross-sectionally compare time segments for potential change points.
 
 To achieve this, the DC statistic from \cite{Cho2016} involves ordered CUSUM values for a given time location, favoring larger values as potential change point candidates. It incorporates a partial thresholding of the smaller ordered CUSUM values, effectively representing a scaled average of the most prominent values at a given location across all $n$ (WHY WAS "n" in quotes here?) time series. Maximizing the DC statistic across all time series and potential time locations results in a test statistic for detecting a change point. This test statistic is then compared against a specific testing criterion, denoted as $\pi_{n,T}^\phi$, leading to the partitioning of time series and the formation of a tree structure based on the detected change points.
 
@@ -301,7 +227,7 @@ Discuss somewhere how we can find mean change points and ALSO variance change po
 
 SEGUE parageraph Using eras and dynasties:::::::::
 
-Using the methodology from \cite{ChoFryzlewicz2014} a thresholding parameter was determined from bootstrapping and then used to find where change points in mean and variance existed in the panel of teams data of a given baseball statistic. To examine the idea of changes throughout teams and types of statistics, for each season the average baseball statistic was found from all the teams that year and then an average time series was created of each of the types of statistics of interest. Then the change point methodology was performed on those 6 time series of average statistic types.
+Since we are interested in finding where in time these different eras of baseball have occurred, we first examine each baseball statistic of interest as their own analysis for all 16 teams. Those baseball statistics are home runs, strikeouts, balls, stolen bases, runs, and attendance which were all standardized to the number of games played in a season since we are interested in seeing how the different statistics change from season to season. Using the methodology from \cite{ChoFryzlewicz2014} a thresholding parameter was determined from bootstrapping and then used to find where change points in mean and variance existed in the panel of teams data of a given baseball statistic. To examine the idea of changes throughout teams and types of statistics (initially), for each season the average baseball statistic was found from all the teams that year and then an average time series was created of each of the types of statistics of interest. Then the change point methodology was performed on those 6 time series of average statistic types.
 
 Continuing our investigation, we explored the concept of "dynasties" within modern baseball teams, irrespective of their length of a teams existence. A dynasty, in this context, refers to a period characterized by significant success or potentially hardships. Such a dynasty is identified when a team experiences a noticeable change across all their statistics in a given season, whether it be in a positive or negative direction. This approach aligns well with our methodology, as it involves examining panels of time series data encompassing all statistics for a singular team.
 The statistics of interest for this analysis include runs, hits, home runs, balls, strikeouts, runs against, hits against, home runs against, balls against, and strikeouts against. To ensure comparability, these statistics were standardized using the season average and standard deviation derived from all teams present in each respective season. By standardizing the statistics, we capture a team's offensive and defensive performance. Notably, if a team exhibits a high and positive offensive performance, it can be balanced to zero by large and negative defensive statistics when standardized. Therefore, if a team excels in both aspects of the game, it would have numerous time points above zero, whereas underperforming teams would display many below-zero values.For each team, we examined their ten statistics, analyzing both mean and variance changes to identify potential change points. By scrutinizing these indicators, we aimed to uncover shifts in a team's performance and assess their significance within the context of dynasties.
@@ -405,163 +331,47 @@ sopergame  &1990                   \\
 
 
 
-<<echo = FALSE, message = FALSE, warning = FALSE>>=
-library(tidyverse)
-library(janitor)
-library(hdbinseg)
+\begin{Schunk}
+\begin{Soutput}
+[1] "g"          "r"          "ab"         "sb"         "hr"        
+[6] "bb"         "so"         "attendance"
+\end{Soutput}
+\begin{Soutput}
+   year_id  franch_id          g          r         ab         sb         hr 
+         0          0          0          0          0          0          0 
+        bb         so attendance 
+         0         16          0 
+\end{Soutput}
+\begin{Soutput}
+ iter imp variable
+  1   1  bb  so  sb  attendance
+  1   2  bb  so  sb  attendance
+  1   3  bb  so  sb  attendance
+  1   4  bb  so  sb  attendance
+  1   5  bb  so  sb  attendance
+  2   1  bb  so  sb  attendance
+  2   2  bb  so  sb  attendance
+  2   3  bb  so  sb  attendance
+  2   4  bb  so  sb  attendance
+  2   5  bb  so  sb  attendance
+  3   1  bb  so  sb  attendance
+  3   2  bb  so  sb  attendance
+  3   3  bb  so  sb  attendance
+  3   4  bb  so  sb  attendance
+  3   5  bb  so  sb  attendance
+  4   1  bb  so  sb  attendance
+  4   2  bb  so  sb  attendance
+  4   3  bb  so  sb  attendance
+  4   4  bb  so  sb  attendance
+  4   5  bb  so  sb  attendance
+  5   1  bb  so  sb  attendance
+  5   2  bb  so  sb  attendance
+  5   3  bb  so  sb  attendance
+  5   4  bb  so  sb  attendance
+  5   5  bb  so  sb  attendance
+\end{Soutput}
+\end{Schunk}
 
-
-teams <- read_csv("../data/Teams.csv") %>% 
-  clean_names()
-
-team_names <- teams %>% 
-  group_by(franch_id) %>% 
-  count() %>% 
-  filter(n > 120) %>% 
-  pull(franch_id)
-
-old_teams_full <- teams %>% 
-  filter(franch_id %in% team_names & year_id > 1900) %>% 
-  select(year_id, franch_id,g, r, ab, sb, hr, bb, so, attendance)
-
-names(old_teams_full)[-c(1:2)]
-## 16 missing values from SO
-apply(old_teams_full, 2,function(x) sum(is.na(x)))
-
-
-imp <- mice::mice(teams[c("r","h","hr","bb","so", "ab", "sb", "g", "attendance", 
-                          "ra", "ha", "hra", "bba", "soa")], method = "cart")
-teams_full_nomiss <- complete(imp)
-
-full_teams <- bind_cols(teams[c("year_id", "franch_id")], teams_full_nomiss) %>% 
-  filter(franch_id %in% team_names & year_id > 1900) %>% 
-  mutate(hr_per_game = hr/g, 
-         so_per_game = so/g,
-         bb_per_game = bb/g,
-         att_per_game = attendance/g,
-         sb_per_game = sb/g, 
-         r_per_game = r/g) %>% 
-  select(year_id, franch_id, hr_per_game, so_per_game, bb_per_game, att_per_game, sb_per_game, r_per_game)
-
-
-# cpt <- function(dataset, var){
-#   wide <- dataset %>% 
-#     pivot_wider(id_cols = franch_id, 
-#                 names_from = year_id, 
-#                 values_from = var)
-#   
-#   ## find thresholding value for cpt using bootstrapping
-#   thrs <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
-#   ### if I lower the threshold more changepoints
-#   hr_cpt_dcbs <- dcbs.alg(as.matrix(wide[-1]), cp.type = 1, thr = thrs)
-#   cpt_years <- as.numeric(names(wide[-1])[hr_cpt_dcbs$ecp])
-#   return(list(threshold = thrs,
-#               years = cpt_years),
-#               variable = var)
-#   
-# }
-
-changes <- lapply(names(full_teams)[-c(1:2)], 
-                  function(i){
-                    wide <- full_teams %>% 
-                      pivot_wider(id_cols = franch_id, 
-                                  names_from = year_id, 
-                                  values_from = i)
-                    
-                    ## find thresholding value for cpt using bootstrapping
-                    thrs <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
-                    ### if I lower the threshold more changepoints
-                    cpt_dcbs <- dcbs.alg(as.matrix(wide[-1]), cp.type = 1, thr = thrs)
-                    cpt_years <- as.numeric(names(wide[-1])[cpt_dcbs$ecp])
-                    return(tibble(threshold = thrs,
-                                years = cpt_years,
-                                variable = i))
-                    
-                  })
-
-changes_var <- lapply(names(full_teams)[-c(1:2)], 
-                  function(i){
-                    wide <- full_teams %>% 
-                      pivot_wider(id_cols = franch_id, 
-                                  names_from = year_id, 
-                                  values_from = i)
-                    
-                    ## find thresholding value for cpt using bootstrapping
-                    thrs <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
-                    ### if I lower the threshold more changepoints
-                    cpt_dcbs <- dcbs.alg(as.matrix(wide[-1]), cp.type = 2, thr = thrs)
-                    cpt_years <- as.numeric(names(wide[-1])[cpt_dcbs$ecp])
-                    return(tibble(threshold = thrs,
-                                  years = cpt_years,
-                                  variable = i))
-                    
-                  })
-
-time_cpts <- changes %>% 
-  tibble() %>% 
-  unnest(cols = c(.)) %>% 
-  mutate(change = "mean")
-
-time_cpts_var <- changes_var %>% 
-  tibble() %>% 
-  unnest(cols = c(.)) %>% 
-  mutate(change = "variance")
-
-
-full_teams %>% 
-  pivot_longer(cols = -c(year_id, franch_id), names_to = "variable", values_to = "value") %>% 
-  ggplot(aes(year_id, value, color = franch_id)) +
-  geom_line() +
-  geom_vline(data = bind_rows(time_cpts, time_cpts_var), aes(xintercept = years, linetype = change)) +
-  facet_wrap(~ variable, scales = "free_y")
-
-
-
-@
-
-<<echo = FALSE, message = FALSE, warning = FALSE>>=
-### season average overall
-
-szn_ave <- full_teams %>% 
-  group_by(year_id) %>% 
-  summarise(szn_ave_hr = mean(hr_per_game),
-            szn_ave_so = mean(so_per_game),
-            szn_ave_bb = mean(bb_per_game),
-            szn_ave_sb = mean(sb_per_game)) %>% 
-  pivot_longer(cols = -year_id, names_to = "stat", values_to = "value") 
-
-wide <- szn_ave %>% 
-  pivot_wider(id_cols = stat, 
-              names_from = year_id, 
-              values_from = value)
-
-
-## find thresholding value for cpt using bootstrapping
-thrs <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
-                    ### if I lower the threshold more changepoints
-cpt_dcbs <- dcbs.alg(as.matrix(wide[-1]), cp.type = 1, thr = thrs)
-cpt_years <- as.numeric(names(wide[-1])[cpt_dcbs$ecp])
- 
-#cpt_years                   
-              
-
-## variance
-## find thresholding value for cpt using bootstrapping
-thrs_var <- dcbs.thr(as.matrix(wide[-1]), interval = c(1, dim(wide[-1])[2]))
-                        ### if I lower the threshold more changepoints
-cpt_dcbs_var <- dcbs.alg(as.matrix(wide[-1]), cp.type = 2, thr = thrs_var)
-cpt_years_var <- as.numeric(names(wide[-1])[cpt_dcbs_var$ecp])
-
-#cpt_years_var  
-
-cpt_szn <- bind_rows(tibble(year = cpt_years, cpt_stat = "mean"), 
-                     tibble(year = cpt_years_var, cpt_stat = "var"))
-
-ggplot(szn_ave) +
-  geom_line(aes(year_id, value, color = stat)) +
-  geom_vline(data = cpt_szn, aes(xintercept = year, linetype = cpt_stat))
-
-@
 
 
 
